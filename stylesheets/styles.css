@@ -19,43 +19,55 @@ a {
 }
 
 .banner {
-  padding: 10px;
-  margin: 0px;
+  padding: 0.5em;
+  margin: 0em;
+  border-bottom: 0.02em solid rgb(255,255,255);
   text-align: center;
-  background-color: rgb(102, 153, 255);
+  background-image: url("/images/newspaper-banner.jpg");
   text-transform: uppercase;
-  font-size: 30px;
-  text-shadow: rgba(0,0,0, 0.8) 2px 2px 10px;
+  font-size: 5em;
+  text-shadow: rgba(0,0,0,1) 0.1em 0.1em 0.5em;
 }
 
 #option-bar {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
   flex: 0 1 auto;
+  border-bottom: 0.05em solid rgb(77,77,77);
   width: 100%;
-  height: 60px;}
+  height: 5em;
+}
+
 .user-options {
+  margin-top: 0.5em;
 align-items: flex-start;
 }
 
 .option-buttons {
+  margin-top: 0.5em;
   flex-direction: column;
   align-content: center;
 }
 
 .option-button {
-  margin-right: 10px;
+  margin-right: 1em;
+  margin-left: 1em;
+  color: rgb(140, 242,242);
 }
 
 .login-box {
   display: flex;
+  align-items: flex-end;
   flex-direction: column;
-  margin: 5px;
+  margin-top: 0.5em;
 }
 
 #login-button {
+  flex-direction: row;
   width: 100%;
-  justify-content: center;
+  margin-top: 0.5em;
+  justify-content: flex-start;
 }
 
 .submit-button {
@@ -65,19 +77,33 @@ align-items: flex-start;
 }
 
 #register {
-  width: 100%;
-  flex-direction: row;
+  color: rgb(140,242,242)
   align-content: flex-end;
 }
 
 #category-bar {
   display: flex;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   flex-direction: row;
+  align-content: flex-start;
+  width: 100%;
+  height: 2em;
 }
 
 .post-block {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
+}
+
+.forum-topics {
+  list-style-type: none;
+  justify-content: space-between;
+  display: inline-flex;
+  width:100%
+
+}
+
+.topic-element {
+
 }

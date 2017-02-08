@@ -14,35 +14,53 @@
         <h1 class="banner">ForumName</h1>
     </header>
     <header id="option-bar">
+        <!--   THESE ARE OPTION BUTTONS FOR AFTER LOGIN
         <span class="option-buttons">
-        <a href="#">
-          <span class="option-button">Messages</span>
+        <a class="option-button" href="#">
+          <img src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-mail.svg" alt="mail">
         </a>
         <a href="#">
             <span class="option-button">Logout</span>
         </a>
         </span>
+      -->
         <span class="login-box">
         <form action="index.html" method="post">
             <input type="text" name="username" value="Username">
             <input type="text" name="password" value="Password">
+            <button class="submitButton" type="submit" formaction="#">Submit</button><br>
         </form>
-        <span  id="login-button"><button class="submitButton" type="button" name="Login" value="Submit"></button></span>
+        <span  id="login-button">
         <a href="#">
           <span id="register">Register</span>
         </a>
         </span>
+
+        </span>
     </header>
     <header id="category-bar">
-        <span class="forum-topics">
-        <ul>
-          <li>Topic1</li>
-          <li>Topic2</li>
-          <li>Topic3</li>
-          <li>Topic4</li>
-          <li>topic5</li>
+        <ul class="forum-topics">
+            <li class="topic-element">Topic1</li>
+            <li class="topic-element">Topic2</li>
+            <li class="topic-element">Topic3</li>
+            <li class="topic-element">Topic4</li>
+            <li class="topic-element">Topic5</li>
+            <li class="topic-element">Topic1</li>
+            <li class="topic-element">Topic2</li>
+            <li class="topic-element">Topic3</li>
+            <li class="topic-element">Topic4</li>
+            <li class="topic-element">Topic5</li>
+            <li class="topic-element">Topic1</li>
+            <li class="topic-element">Topic2</li>
+            <li class="topic-element">Topic3</li>
+            <li class="topic-element">Topic4</li>
+            <li class="topic-element">Topic5</li>
+            <li class="topic-element">Topic1</li>
+            <li class="topic-element">Topic2</li>
+            <li class="topic-element">Topic3</li>
+            <li class="topic-element">Topic4</li>
+            <li class="topic-element">Topic5</li>
         </ul>
-      </span>
     </header>
     <main class="post-block">
         <header>
@@ -69,7 +87,9 @@
     </main>
 
 
-
+    <script id="__bs_script__">
+        //<![CDATA[document.write("<script async src='http:/HOST:3000/browser-sync-client.js?v=2.18.7'><\/script>".replace("HOST", location.hostname));//]]>
+    </script>
 </body>
 
 </html>

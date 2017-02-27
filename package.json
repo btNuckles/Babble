@@ -1,0 +1,24 @@
+{
+  "name": "466project",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.10.6",
+    "mysql": "^2.5.4"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/btNuckles/466-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/btNuckles/466-Project/issues"
+  },
+  "homepage": "https://github.com/btNuckles/466-Project#readme",
+  "devDependencies": {},
+  "description": "Updated"
+}

@@ -38,28 +38,30 @@ function getSubmitButton() {
 
 function createButtonEvent() {
     var button = getSubmitButton();
-    button.addEventListener('click', function getDBLine() {
+    $(button).click(function(){
         consoleLog("Right before AJAX");
-        var username = document.getElementsByClassName(USERNAME_SELECTOR).value;
-        var email = document.getElementsByClassName(EMAIL_SELECTOR).value;
-        var password = document.getElementsByClassName(PASSWORD_SELECTOR).value;
-        var passwordConfirmation = document.getElementsByClassName(PASSWORD_CONFIRMATION).value;
+        var username = $(document.getElementsByClassName(USERNAME_SELECTOR)).val();
+        var email = $(document.getElementsByClassName(EMAIL_SELECTOR)).val();
+        var password = $(document.getElementsByClassName(PASSWORD_SELECTOR)).val();
+        var passwordConfirmation = $(document.getElementsByClassName(PASSWORD_CONFIRMATION)).val();
 
         if (password == passwordConfirmation) {
           consoleLog(password);
           consoleLog(passwordConfirmation);
-            consoleLog("Passwords Match");
+          consoleLog("Passwords Match");
             $.ajax({
                 url: "php/register.php",
                 type: "POST",
-                dataType: 'json',
                 data: {
-                    email: email,
-                    username: username,
-                    password: password
+                    emailEntered: email,
+                    usernameEntered: username,
+                    passwordEntered: password
                 },
-                success: function(result) {
+                success: function(result) {                    consoleLog("Inside success function.");
                     consoleLog(result);
+                },
+                error: function() {
+                  consoleLog("Did not execute php scripts");
                 }
             })
         }
@@ -72,7 +74,7 @@ function createButtonEvent() {
         consoleLog("Submit was Clicked");
     });
     consoleLog("Event created");
-}
+  }
 
 
 

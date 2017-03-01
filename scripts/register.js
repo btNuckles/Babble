@@ -4,16 +4,6 @@ var USERNAME_SELECTOR = 'username';
 var PASSWORD_SELECTOR = 'password';
 var PASSWORD_CONFIRMATION = 'password-confirmation';
 
-function checkPassword(password, passwordConfirmation) {
-    if (password == password) {
-        consoleLog("Matched.");
-    } else {
-        {
-            return 0;
-        }
-    }
-}
-
 function consoleLog(someMessage) {
     console.log(someMessage);
 }
@@ -38,17 +28,13 @@ function getSubmitButton() {
 
 function createButtonEvent() {
     var button = getSubmitButton();
-    $(button).click(function(){
-        consoleLog("Right before AJAX");
+    $(button).click(function() {
         var username = $(document.getElementsByClassName(USERNAME_SELECTOR)).val();
         var email = $(document.getElementsByClassName(EMAIL_SELECTOR)).val();
         var password = $(document.getElementsByClassName(PASSWORD_SELECTOR)).val();
         var passwordConfirmation = $(document.getElementsByClassName(PASSWORD_CONFIRMATION)).val();
 
         if (password == passwordConfirmation) {
-          consoleLog(password);
-          consoleLog(passwordConfirmation);
-          consoleLog("Passwords Match");
             $.ajax({
                 url: "php/register.php",
                 type: "POST",
@@ -57,15 +43,15 @@ function createButtonEvent() {
                     usernameEntered: username,
                     passwordEntered: password
                 },
-                success: function(result) {                    consoleLog("Inside success function.");
+                success: function(result) {
+                    consoleLog("Inside success function.");
                     consoleLog(result);
                 },
                 error: function() {
-                  consoleLog("Did not execute php scripts");
+                    consoleLog("Did not execute php scripts");
                 }
             })
-        }
-        else {
+        } else {
             alert("Passwords do not match.")
             return;
         }
@@ -74,7 +60,7 @@ function createButtonEvent() {
         consoleLog("Submit was Clicked");
     });
     consoleLog("Event created");
-  }
+}
 
 
 

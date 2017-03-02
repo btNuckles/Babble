@@ -6,20 +6,18 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <title>Registration</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="stylesheets/register.css">
 </head>
 
 <body>
-    <div>
-        <div class="">
-            <span>Email Address</span>
-            <input class="email" type="text" name="email">
-            <span>Desired Username</span>
-            <input class="username" type="text" name="username">
-            <span>Password (8 character min.)</span>
-            <input class="password" type="text" name="password">
-            <span>Confirm Password</span>
-            <input class="password-confirmation" type="text" name="password2">
-            <button data-button="submit" type="button" name="button">Submit</button>
+    <div class="register-container">
+        <div class="register-box">
+          <h1>Create Your Account</h1>
+            <p class="input-boxes"><input class="email" type="text" name="email" placeholder="Email Address"></p>
+            <p class="input-boxes"><input class="username" type="text" name="username" placeholder="Username"></p>
+            <p class="input-boxes"><input class="password" type="text" name="password" placeholder="Password"></p>
+            <p class="input-boxes"><input class="password-confirmation" type="text" name="password2" placeholder="Confirm Password"></p>
+            <button id=sub-button data-button="submit" type="button" name="button">Submit</button>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

@@ -4,24 +4,24 @@ $username = "sysadmin";
 $password = "sys466";
 $dbname = "forumproject";
 
-$conn = mysql_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 if ($conn == false) {
     die("Connection failed");
 }
 
-mysql_select_db($dbname) or die( "Unable to select database");
+mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
 
 $user_name = $_POST['usernameEntered'];
 $pass_word = $_POST['passwordEntered'];
 
 $sql = "SELECT password FROM users WHERE username = '$user_name'";
 
-$result = mysql_query($sql, $conn);
+$result = mysqli_query($conn, $sql);
 $resultArray = array();
 if ($result)
 {
-  $resultArray = mysql_fetch_array($result);
+  $resultArray = mysqli_fetch_array($result);
 }
 
 if ($pass_word == $resultArray[0])

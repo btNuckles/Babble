@@ -13,6 +13,9 @@
     <header class="main-header">
         <h1 class="banner">ForumName</h1>
     </header>
+
+
+
     <header id="option-bar">
         <!--   THESE ARE OPTION BUTTONS FOR AFTER LOGIN
         <span class="option-buttons">
@@ -29,61 +32,61 @@
             <input class="password" type="text" name="password" value="Password">
             <button data-button="submit" type="button" name="button">Submit</button>
           </span>
-        <span  id="login-button">
+        <span id="login-button">
         <a href="register.html">
           <span id="register">Register</span>
         </a>
         </span>
     </header>
-    <header id="category-bar">
-        <ul class="forum-topics">
-            <li class="topic-element">Topic1</li>
-            <li class="topic-element">Topic2</li>
-            <li class="topic-element">Topic3</li>
-            <li class="topic-element">Topic4</li>
-            <li class="topic-element">Topic5</li>
-            <li class="topic-element">Topic1</li>
-            <li class="topic-element">Topic2</li>
-            <li class="topic-element">Topic3</li>
-            <li class="topic-element">Topic4</li>
-            <li class="topic-element">Topic5</li>
-            <li class="topic-element">Topic1</li>
-            <li class="topic-element">Topic2</li>
-            <li class="topic-element">Topic3</li>
-            <li class="topic-element">Topic4</li>
-            <li class="topic-element">Topic5</li>
-            <li class="topic-element">Topic1</li>
-            <li class="topic-element">Topic2</li>
-            <li class="topic-element">Topic3</li>
-            <li class="topic-element">Topic4</li>
-            <li class="topic-element">Topic5</li>
+
+    <ul class="forum-topics">
+        <ul>
+          <h1>Recent Topics</h1>
+
+          <!-- INCLUDE CODE TO GRAB RECENT THREADS FROM SQL DATABASE -->
+
+            <li class="topic-element">[Display Topic 1]
+                <header>
+                    <a href="#">Post Link</a>
+                    <p>
+                        This is where the post content will be put. More text here. More text here. More text here. Blah blah blah blah blah blah. More blah blah blah blah blah.
+                    </p>
+                </header>
+            </li>
+
+            <li class="topic-element">[Display Topic 2]
+                <header>
+                    <a href="#">Post Link</a>
+                    <p>
+                        This is where the post content will be put. More text here. More text here. More text here. Blah blah blah blah blah blah. More blah blah blah blah blah.
+                    </p>
+                </header>
+            </li>
+
+            <!-- END CODE TO STORE THREAD INTO SQL DATABASE -->
+
         </ul>
+    </ul>
+
+
+    <header id="category-bar">
+        <!-- Form for new post/thread -->
+        <p>
+            <a href="posttopic.html">
+                <input type="button" value="Create New Topic" />
+            </a>
+        </p>
+        <!-- End Form -->
     </header>
-    <main class="post-block">
-        <header>
-            <h2>PostTitle</h2>
-            <a href="#">Post Link</a>
-            <p>This is where the post content will be put. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                est laborum.</p>
-        </header>
-        <main class="comment-block">
-            <div class="comment">
-                <span class="poster-info">
-            <a href="#">
-              <span class="users-name">RandomForumUser</span>
-                <img class="user-thumbnail" src="#" alt="usersAvi">
-                </a>
-                </span>
-                <span class="comment-body">
-            <a href="#">Edit</a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </span>
-            </div>
-        </main>
-    </main>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="scripts/index.js" charset="utf-8"></script>
 </body>
+
+
+
+
+
+
 
 </html>

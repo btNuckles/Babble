@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ForumName</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="stylesheets/indexstyles.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <h1 class="banner">ForumName</h1>
+    </header>
+    <header id="option-bar">
+        <!--   THESE ARE OPTION BUTTONS FOR AFTER LOGIN
+        <span class="option-buttons">
+        <a class="option-button" href="#">
+          <img src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-mail.svg" alt="mail">
+        </a>
+        <a href="#">
+            <span class="option-button">Logout</span>
+        </a>
+        </span>
+      -->
+
+
+      <!-- INCLUDE CODE TO LOGOUT -->
+
+        <span class="logout-box">
+            <button data-button="submit" type="button" name="button">Logout</button>
+        </span>
+
+        <!-- END CODE TO LOGOUT -->
+
+
+        <span class="index">
+          <a href="index.html">
+            <button data-button="submit" type="button" name="button">Home Page</button>
+          </a>
+        </span>
+
+    </header>
+
+    <!-- FORM FOR NEW THREAD -->
+    <main class="post-block">
+        <header>
+            <h2>Create New Topic</h2>
+            <p>This is where the user can create their own post or thread.</p>
+        </header>
+
+        <form method="post" action="">
+            Topic Name: <input type="text" name="topic_name" />
+            <p>Topic Description: <textarea name="topic_description"></textarea></p>
+            <p><input type="submit" value="Add Topic" /></p>
+
+            <!-- INCLUDE CODE TO STORE THREAD INTO SQL DATABASE -->
+
+        </form>
+    </main>
+    <!-- END FORM FOR NEW THREAD -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="scripts/posttopic.js" charset="utf-8"></script>
+</body>
+
+</html>

@@ -13,54 +13,37 @@
     <header class="main-header">
         <h1 class="banner">ForumName</h1>
     </header>
+
     <header id="option-bar">
-        <!--   THESE ARE OPTION BUTTONS FOR AFTER LOGIN
-        <span class="option-buttons">
-        <a class="option-button" href="#">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-mail.svg" alt="mail">
-        </a>
-        <a href="#">
-            <span class="option-button">Logout</span>
-        </a>
-        </span>
-      -->
-
-
-      <!-- INCLUDE CODE TO LOGOUT -->
-
+        <!-- INCLUDE CODE TO LOGOUT -->
         <span class="logout-box">
-            <button data-button="submit" type="button" name="button">Logout</button>
+            <button data-button="submit1" type="button" name="logout">Logout</button>
         </span>
-
         <!-- END CODE TO LOGOUT -->
 
-
+        <!-- RETURN TO HOMEPAGE -->
         <span class="index">
           <a href="index.html">
-            <button data-button="submit" type="button" name="button">Home Page</button>
+            <button data-button="submit2" type="button" name="homepage">Home Page</button>
           </a>
         </span>
-
+        <!-- RETURN TO HOMEPAGE -->
     </header>
 
     <!-- FORM FOR NEW THREAD -->
-    <main class="post-block">
-        <header>
-            <h2>Create New Topic</h2>
-            <p>This is where the user can create their own post or thread.</p>
-        </header>
+    <center>
 
-        <form method="post" action="">
-            Topic Name: <input type="text" name="topic_name" />
-            <p>Topic Description: <textarea name="topic_description"></textarea></p>
-            <p><input type="submit" value="Add Topic" /></p>
+      <div class="register-container">
+          <div class="register-box">
+              <h1>Create New Topic</h1>
 
-            <!-- INCLUDE CODE TO STORE THREAD INTO SQL DATABASE -->
-
-        </form>
-    </main>
+                Title: <b class="input-boxes"><input class="title" type="text" name="title"></b><p></p>
+                Content: <b class="input-boxes"><textarea input class="content" type="text" name="content"></textarea></b><p></p>
+                <button id="sub-button" data-button="submit" type="button" name="button">Create Topic</button>
+            </div>
+        </div>
+    </center>
     <!-- END FORM FOR NEW THREAD -->
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="scripts/posttopic.js" charset="utf-8"></script>

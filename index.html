@@ -36,26 +36,33 @@
         </span>
     </header>
 
-
     <!-- SCRIPT TO LOAD LATEST TOPICS -->
     <script>
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+    function reloading(){
+
+      if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
         }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET","php/gettopic.php",true);
-        xmlhttp.send();
+      else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("loaddiv").innerHTML = this.responseText; }
+      };
+
+      xmlhttp.open("GET","php/gettopic.php",true);
+      xmlhttp.send();
+    }
+
+    setInterval(function() {reloading();}, 1000);
+
     </script>
     <!-- SCRIPT TO LOAD LATEST TOPICS -->
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="scripts/index.js" charset="utf-8"></script>
@@ -72,7 +79,7 @@
 
 <!-- DISPLAY RECENT TOPICS -->
 <h1>Recent Topics</h1>
-<div id="txtHint"></div>
+<div id="loaddiv"></div>
 </center>
 <!-- DISPLAY RECENT TOPICS -->
 

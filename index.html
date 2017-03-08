@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>ForumName</title>
@@ -24,43 +25,44 @@
         </a>
         </span>
       -->
-        <span class="login-box">
-            <input class="username" type="text" name="username" value="Username">
-            <input class="password" type="text" name="password" value="Password">
+        <div id="login-box">
+            <input class="username" type="text" name="username" placeholder="Username">
+            <input class="password" type="text" name="password" placeholder="Password">
             <button data-button="submit" type="button" name="button">Submit</button>
-          </span>
-        <span id="login-button">
-        <a href="register.html">
-          <span id="register">Register</span>
+        </div>
+        <div class="logout">
+        <button id="logout-button" data-button="logout" type="button" name="button">Logout</button>
+      </div>
+        <a id="register-link" href="register.html">
+            <span id="register">Register</span>
         </a>
-        </span>
     </header>
 
     <!-- SCRIPT TO LOAD LATEST TOPICS -->
     <script>
+        function reloading() {
 
-    function reloading(){
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
 
-      if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("loaddiv").innerHTML = this.responseText;
+                }
+            };
+
+            xmlhttp.open("GET", "php/gettopic.php", true);
+            xmlhttp.send();
         }
-      else {
-        // code for IE6, IE5
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-      }
 
-      xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("loaddiv").innerHTML = this.responseText; }
-      };
-
-      xmlhttp.open("GET","php/gettopic.php",true);
-      xmlhttp.send();
-    }
-
-    setInterval(function() {reloading();}, 1000);
-
+        setInterval(function() {
+            reloading();
+        }, 1000);
     </script>
     <!-- SCRIPT TO LOAD LATEST TOPICS -->
 
@@ -70,16 +72,16 @@
 
 <!-- CREATE NEW TOPIC -->
 <center>
-<a href="posttopic.html">
-    <input type="button" value="Create New Topic" />
-</a>
-<p></p>
-<!-- CREATE NEW TOPIC -->
+    <a href="posttopic.html">
+        <input type="button" value="Create New Topic" />
+    </a>
+    <p></p>
+    <!-- CREATE NEW TOPIC -->
 
 
-<!-- DISPLAY RECENT TOPICS -->
-<h1>Recent Topics</h1>
-<div id="loaddiv"></div>
+    <!-- DISPLAY RECENT TOPICS -->
+    <h1>Recent Topics</h1>
+    <div id="loaddiv"></div>
 </center>
 <!-- DISPLAY RECENT TOPICS -->
 

@@ -51,6 +51,16 @@
   border-color: rgba(0, 0, 0, 0.08);
 }
 
+#hidden-password-error {
+  display: none;
+  color: red;
+}
+
+#hidden-email-error {
+  display: none;
+  color: red;
+}
+
 .login h1 {
   margin: -2em -2em 2.05em;
   line-height: 4em;

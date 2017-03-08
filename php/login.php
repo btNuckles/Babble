@@ -27,6 +27,7 @@ if ($result)
 if ($pass_word == $resultArray[0])
 {
   session_start();
+  $_SESSION['userlogin'] = $user_name;
 
   if(session_status())
   {

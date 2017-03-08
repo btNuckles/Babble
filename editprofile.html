@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ForumName</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="stylesheets/indexstyles.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <h1 class="banner">ForumName</h1>
+    </header>
+
+    <header id="option-bar">
+        <!-- INCLUDE CODE TO LOGOUT -->
+        <span class="logout-box">
+            <button data-button="submit1" type="button" name="logout">Logout</button>
+        </span>
+        <!-- END CODE TO LOGOUT -->
+
+        <!-- RETURN TO HOMEPAGE -->
+        <span class="index">
+          <a href="index.html">
+            <button data-button="submit2" type="button" name="homepage">Home Page</button>
+          </a>
+        </span>
+        <!-- RETURN TO HOMEPAGE -->
+    </header>
+
+    <!-- EDIT USER PROFILE FORM -->
+    <center>
+
+      <div class="edit-profile-container">
+          <div class="edit-profile-box">
+              <h1>Edit Your Profile</h1>
+
+                Username: <b class="input-boxes"><input class="username" type="text" name="username"></b><p></p>
+                Karma: <b class="input-boxes"><textarea input class="karma" type="text" name="karma"></textarea></b><p></p>
+                <button id="sub-button" data-button="submit" type="button" name="button">Save Changes</button>
+            </div>
+        </div>
+    </center>
+    <!-- END EDIT USER PROFILE FORM -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="scripts/editprofile.js" charset="utf-8"></script>
+</body>
+
+</html>

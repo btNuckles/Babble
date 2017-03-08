@@ -13,29 +13,27 @@ if ($conn == false) {
 
 mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
 
-$sql = "SELECT * FROM threads WHERE board_id = '0' ORDER BY time_created DESC LIMIT 10";
+// select from the database the posts with the same thread id
+$id = $_GET['id'];
+$sql = "SELECT * FROM threads, posts WHERE $id = board_id AND $id = thread_id";
 $result = mysqli_query($conn, $sql);
+$rows = mysqli_fetch_array($result);
 
-//prepare the table
 echo '<table border="1">
       <tr>
-        <th>Author</th>
-        <th>Topic</th>
-        <th>Created at</th>
+        <th>title</th>
+        <th>Post</th>
       </tr>';
 
+// test to see output
 while($row = mysqli_fetch_array($result))
 {
-    echo '<tr>';
+	echo '<tr>';
         echo '<td class="leftpart">';
-        echo  ($row['board_id']);
-        echo '<td class="leftpart">';
-          echo '<h3><a href="topic.html?id=' . $row['board_id'] . '">' . $row['title'] . '</a><h3>';
-          echo '</td>';
+        echo  ($row['thread_id']);
         echo '<td class="rightpart">';
-            echo date('H:i:s a', strtotime($row['time_created']));
-            echo '<br>';
-            echo date('M d, Y', strtotime($row['time_created']));
+          echo $rows['content'];
+          echo '</td>';
         echo '</td>';
     echo '</tr>';
 }
@@ -43,6 +41,3 @@ while($row = mysqli_fetch_array($result))
 mysqli_close($conn);
 
 ?>
-
-</body>
-</html>

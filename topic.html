@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ForumName</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="stylesheets/indexstyles.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <h1 class="banner">ForumName</h1>
+    </header>
+
+    <header id="option-bar">
+        <!-- INCLUDE CODE TO LOGOUT -->
+        <span class="logout-box">
+            <button data-button="submit1" type="button" name="logout">Logout</button>
+        </span>
+        <!-- END CODE TO LOGOUT -->
+
+        <!-- RETURN TO HOMEPAGE -->
+        <span class="index">
+          <a href="index.html">
+            <button data-button="submit2" type="button" name="homepage">Home Page</button>
+          </a>
+        </span>
+        <!-- RETURN TO HOMEPAGE -->
+    </header>
+	
+	<!-- SCRIPT TO LOAD LATEST POSTS -->
+    <script>
+	
+    function reloading(){
+	  //code to extract POST from gettopic.php
+      var queryDict = {};
+	  location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]});
+	
+      if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+        }
+      else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("loaddiv").innerHTML = this.responseText; }
+      };
+      
+	  // POST to topic.php?
+      xmlhttp.open("GET","php/topic.php?id=",true);
+      xmlhttp.send(queryDict);
+    }
+
+    setInterval(function() {reloading();}, 1000);
+	
+	</script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- <script src="scripts/topic.js" charset="utf-8"></script> -->	
+	
+    </script>
+    <!-- SCRIPT TO LOAD LATEST POSTS -->
+
+    <!-- DISPLAY RECENT POSTS -->
+    <center>
+	<div id="loaddiv"></div>
+	</center>
+    <!-- DISPLAY RECENT POSTS -->
+	
+	<!-- FORM FOR NEW POST -->
+    <center>
+      <div class="register-container">
+          <div class="register-box">
+                Content: <b class="input-boxes"><textarea input class="content" type="text" name="content"></textarea></b><p></p>
+                <button id="sub-button" data-button="submit" type="button" name="button">Reply</button>
+            </div>
+        </div>
+    </center>
+    <!-- END FORM FOR NEW POST -->
+
+
+</body>
+
+</html>

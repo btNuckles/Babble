@@ -1,43 +1,35 @@
 <?php
-
+$thread_id = $_GET["id"];
 $servername = "162.243.184.42";
 $username = "sysadmin";
 $password = "sys466";
 $dbname = "forumproject";
-
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-
 if ($conn == false) {
     die("Connection failed");
 }
-
 mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
-
-// select from the database the posts with the same thread id
-$id = $_GET['id'];
-$sql = "SELECT * FROM threads, posts WHERE $id = board_id AND $id = thread_id";
+// Grabbing title from 'threads' table
+$sql = "SELECT * FROM threads WHERE id = '$thread_id'";
 $result = mysqli_query($conn, $sql);
-$rows = mysqli_fetch_array($result);
-
-echo '<table border="1">
-      <tr>
-        <th>title</th>
-        <th>Post</th>
-      </tr>';
-
-// test to see output
+$thread = mysqli_fetch_array($result);
+  echo '<table border="1" style="width:90%"><tr>';
+  echo '<h3><center>Thread Title: ' . $thread['title'] . '</h3></center>';
+  echo '</td>';
+  echo '</tr>';
+  // Grabbing posts from 'posts' table
+$sql = "SELECT * FROM posts WHERE thread_id = '$thread_id'";
+$result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result))
 {
-	echo '<tr>';
-        echo '<td class="leftpart">';
-        echo  ($row['thread_id']);
-        echo '<td class="rightpart">';
-          echo $rows['content'];
-          echo '</td>';
-        echo '</td>';
+    echo '<tr>';
+    echo '<th>Author ID: ' . $row['author_id'] . '<br>Likes: '
+      . $row['likes'] . '<br>Dislikes: ' . $row['dislikes']
+      . '<br>Date Posted: '  . date('M d, Y', strtotime($row['time_created']))
+      . '<br>Time Posted: '  . date('H:i:s a', strtotime($row['time_created']));
+    echo '<th>Post: ' . $row['content'] . '';
+    echo '</td>';
     echo '</tr>';
 }
-
 mysqli_close($conn);
-
 ?>

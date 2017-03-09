@@ -32,9 +32,12 @@
 	
 	<!-- SCRIPT TO LOAD LATEST POSTS -->
     <script>
-
+	
     function reloading(){
-
+	  //code to extract POST from gettopic.php
+      var queryDict = {};
+	  location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]});
+	
       if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
@@ -48,9 +51,10 @@
         if (this.readyState == 4 && this.status == 200) {
           document.getElementById("loaddiv").innerHTML = this.responseText; }
       };
-
-      xmlhttp.open("GET","php/topic.php",true);
-      xmlhttp.send();
+      
+	  // POST to topic.php?
+      xmlhttp.open("GET","php/topic.php?id=",true);
+      xmlhttp.send(queryDict);
     }
 
     setInterval(function() {reloading();}, 1000);
@@ -58,7 +62,7 @@
 	</script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="scripts/topic.js" charset="utf-8"></script>	
+    <!-- <script src="scripts/topic.js" charset="utf-8"></script> -->	
 	
     </script>
     <!-- SCRIPT TO LOAD LATEST POSTS -->

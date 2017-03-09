@@ -1,3 +1,4 @@
+// NOTE: was causing infinite looping when called from topic.html; currently commented out
 var ID_SELECTOR = 'id';
 
 function consoleLog(someMessage)

@@ -6,43 +6,41 @@
     <meta charset="utf-8">
     <title>ForumName</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/editprofile.css">
     <link rel="stylesheet" href="stylesheets/indexstyles.css">
 </head>
 
 <body>
-    <header class="main-header">
-        <h1 class="banner">ForumName</h1>
-    </header>
-
-    <header id="option-bar">
-        <!-- INCLUDE CODE TO LOGOUT -->
-        <span class="logout-box">
-            <button data-button="submit1" type="button" name="logout">Logout</button>
-        </span>
-        <!-- END CODE TO LOGOUT -->
-
-        <!-- RETURN TO HOMEPAGE -->
-        <span class="index">
-          <a href="index.html">
-            <button data-button="submit2" type="button" name="homepage">Home Page</button>
-          </a>
-        </span>
-        <!-- RETURN TO HOMEPAGE -->
-    </header>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
+    <div id="nav-container mr-auto" class="container-fluid">
+      <a id="forum-name" class="navbar-brand" href="#">BABBLE</a>
+      <ul id="nav-list" class="nav navbar-nav mr-auto" style="display:inline-block">
+        <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" href="viewprofile.html">Profile</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" href="editprofile.html">Account</a></li>
+        <li class="nav-item"><a class="nav-item nav-link" id="register-link" href="register.html">Register</a></li>
+        <li class="nav-item pull-right"><button data-button="submit" id="login-button" type="button" name="button" class="btn btn-primary my-2 my-sm-0">Login</button></li>
+        <li class="nav-item pull-right"><button class="btn btn-primary my-2 my-sm-0" id="logout-button" data-button="logout" type="button" name="button">Logout</button></li>
+        <li class="nav-item pull-right"><div id="login-box" class="form-inline my-2 my-lg-0">
+            <!--<div id="login-box" class="form-inline">-->
+            <input class="form-control" id="username" type="text" name="username" placeholder="Username">
+            <input class="form-control" id="password" type="password" name="password" placeholder="Password">
+        </div></li>
+      </ul>
+    </div>
+  </nav>
 
     <!-- EDIT USER PROFILE FORM -->
-    <center>
 
-      <div class="edit-profile-container">
-          <div class="edit-profile-box">
+          <div id="edit-box" class="container">
               <h1>Edit Your Profile</h1>
-
-                Username: <b class="input-boxes"><input class="username" type="text" name="username"></b><p></p>
-                Karma: <b class="input-boxes"><textarea input class="karma" type="text" name="karma"></textarea></b><p></p>
-                <button id="sub-button" data-button="submit" type="button" name="button">Save Changes</button>
+                <label id="new-username-label" for="edit-username">New Username</label>
+                <b class="input-boxes"><input id="edit-username" class="form-control" type="text" name="username"></b><p></p>
+                <label id="bio-label" for="karma">Karma</label>
+                <b class="input-boxes"><textarea input class="form-control" id="karma" type="text" name="karma"></textarea></b><p></p>
+                <button id="sub-button" class="btn btn-primary" data-button="submit" type="button" name="button">Save Changes</button>
             </div>
-        </div>
-    </center>
     <!-- END EDIT USER PROFILE FORM -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

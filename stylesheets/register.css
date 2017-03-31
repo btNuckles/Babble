@@ -36,21 +36,6 @@
   border-radius: 0.5em;
 }
 
-.input-boxes {
-  margin-top: 1.2em;
-  width: 100%;
-}
-
-#sub-button {
-  width: 7em;
-  height: 3em;
-  margin-top: 2em;
-  background: rgba(12, 105, 249, 0.84);
-  color: white;
-  border-radius: 2.5em;
-  border-color: rgba(0, 0, 0, 0.08);
-}
-
 #hidden-password-error {
   display: none;
   color: red;
@@ -78,4 +63,63 @@
   background-image: linear-gradient(to bottom, whiteffd, #eef2f5);
   -webkit-box-shadow: 0 0.1em whitesmoke;
   box-shadow: 0 0.1em whitesmoke;
+}
+
+.navbar {
+  background-color: rgba(125, 125, 125, 0.47);
+}
+
+#nav-container {
+  width: 100%;
+}
+
+#login-box {
+  align-self: flex-end;
+  width: 100%;
+}
+
+#login-button {
+  margin-top: 9px;
+  margin-left: 4px;
+}
+
+#logout-button {
+  margin-top: 9px;
+  margin-left: 4px;
+  display: none;
+}
+
+#username {
+  margin-top: 9px;
+  display: inline-block;
+  align-self: flex-end;
+}
+
+#password {
+  margin-top: 9px;
+  display: inline-block;
+  align-self: flex-end;
+}
+
+#nav-list {
+  display: inline-flex;
+  flex: 1 1 auto;
+  width: 90%;
+  margin-left: 15px;
+}
+
+#forum-name {
+  display: inline-flex;
+  flex: 1 1 auto;
+  width: 10%;
+}
+
+#nav-list li, #nav-list li a {
+  text-align: center;
+  display: inline-block;
+}
+
+#navbarSupportedContent {
+  display: inline-block;
+  width:90%;
 }

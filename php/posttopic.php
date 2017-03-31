@@ -21,12 +21,12 @@ $title = $_POST['titleEntered'];
 $time = date('Y/m/d H:i:s');
 // ======= THREAD TABLE ==========
 
-$sql = "INSERT INTO threads"."(id, board_id, title, author_id, time_created, locked)"."VALUES(0, 0, '$title', 0, '$time', 0)";
+$sql = "INSERT INTO threads"."(board_id, title, author_id, time_created, locked)"."VALUES(0, '$title', 0, '$time', 0)";
 $insert= mysqli_query($conn, $sql);
 
 
 // ======= POST TABLE ==========
-// $thread_id = ""; <-- needs to auto increment
+$thread_id = mysqli_insert_id($conn);
 // $author_id = ""; <-- not sure where to grab this. 'id' primary key?
 $time = date('Y/m/d H:i:s');
 $content = $_POST['contentEntered'];
@@ -34,7 +34,7 @@ $content = $_POST['contentEntered'];
 // $dislikes = ""; <-- default is 0
 // ======= POST TABLE ==========
 
-$sql = "INSERT INTO posts"."(id,thread_id, author_id, time_created, content, likes, dislikes)"."VALUES(0, 0, 0, '$time', '$content', 0, 0)";
+$sql = "INSERT INTO posts"."(thread_id, author_id, time_created, content, likes, dislikes)"."VALUES('$thread_id', 0, '$time', '$content', 0, 0)";
 $insert= mysqli_query($conn, $sql);
 
 

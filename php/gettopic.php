@@ -30,7 +30,7 @@ while($row = mysqli_fetch_array($result))
         echo '<td class="leftpart">';
         echo  ($row['board_id']);
         echo '<td class="leftpart">';
-          echo '<h3><a href="topic.php?id=' . $row['board_id'] . '">' . $row['title'] . '</a><h3>';
+          echo '<h3><a href="topic.html?id=' . $row['board_id'] . '">' . $row['title'] . '</a><h3>';
           echo '</td>';
         echo '<td class="rightpart">';
             echo date('H:i:s a', strtotime($row['time_created']));

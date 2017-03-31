@@ -2,8 +2,9 @@ var SUBMIT_BUTTON_SELECTOR = '[data-button="submit"]';
 var USERNAME_SELECTOR = 'username';
 var PASSWORD_SELECTOR = 'password';
 var LOGIN_BOX_SELECTOR = 'login-box';
+var LOGIN_BUTTON_SELECTOR = 'login-button';
 var REGISTER_LINK_SELECTOR = 'register-link';
-var   LOGOUT_BUTTON_SELECTOR = 'logout-button';
+var LOGOUT_BUTTON_SELECTOR = 'logout-button';
 
 function consoleLog(someMessage) {
     console.log(someMessage);
@@ -30,14 +31,21 @@ function getLogoutButton() {
   return button;
 }
 
+function getLoginButton() {
+  var button = document.getElementById(LOGIN_BUTTON_SELECTOR);
+  return button;
+}
+
 function hideLoginOptions() {
   console.log("hiding login options");
   var regLink = getRegisterLink();
   var loginBox = getLoginBox();
   var button = getLogoutButton();
+  var button2 = getLoginButton();
   regLink.style.display = 'none';
   loginBox.style.display = 'none';
   button.style.display = 'block';
+  button2.style.display = 'none';
 }
 
 function showLoginOptions() {

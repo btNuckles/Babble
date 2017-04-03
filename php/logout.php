@@ -1,5 +1,4 @@
 <?php
-session_start();
-session_destroy();
-$_SESSION['is_open'] = FALSE;
- ?>
+ session_start();
+ session_destroy();
+?>

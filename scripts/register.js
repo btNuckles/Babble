@@ -1,4 +1,4 @@
-var SUBMIT_BUTTON_SELECTOR = '[data-button="submit"]';
+var REG_SUBMIT_BUTTON_SELECTOR = '[data-button="reg-submit"]';
 var EMAIL_SELECTOR = 'email';
 var USERNAME_SELECTOR = 'username';
 var PASSWORD_SELECTOR = 'password';
@@ -32,8 +32,8 @@ window.onload = function() {
 }
 */
 
-function getSubmitButton() {
-    var button = document.querySelector(SUBMIT_BUTTON_SELECTOR);
+function getRegSubmitButton() {
+    var button = document.querySelector(REG_SUBMIT_BUTTON_SELECTOR);
     consoleLog("buttonAssigned");
     return button;
 }
@@ -74,33 +74,34 @@ function validateEmail(email) {
 }
 
 function createButtonEvent() {
-    var button = getSubmitButton();
+    var button = getRegSubmitButton();
     $(button).click(function() {
         consoleLog("Right before AJAX");
-        var username = $(document.getElementsByClassName(USERNAME_SELECTOR)).val();
-        var email = $(document.getElementsByClassName(EMAIL_SELECTOR)).val();
-        var password = $(document.getElementsByClassName(PASSWORD_SELECTOR)).val();
-        var passwordConfirmation = $(document.getElementsByClassName(PASSWORD_CONFIRMATION)).val();
+        var reg_username = document.getElementById("register-username").value;
+        var reg_email = document.getElementById("email").value;
+        var reg_password = document.getElementById("register-password").value;
+        var reg_passwordConfirmation = document.getElementById("password-confirmation").value;
 
-        if (validateEmail(email) === true) {
+        if (validateEmail(reg_email) === true) {
                 hideEmailError();
-            if (password == passwordConfirmation) {
+            if (reg_password == reg_passwordConfirmation) {
                 hidePasswordError();
-                consoleLog(password);
-                consoleLog(passwordConfirmation);
+                consoleLog(reg_password);
+                consoleLog(reg_passwordConfirmation);
                 consoleLog("Passwords Match");
                 $.ajax({
                     url: "php/register.php",
                     type: "POST",
                     data: {
-                        emailEntered: email,
-                        usernameEntered: username,
-                        passwordEntered: password
+                        regEmailEntered: reg_email,
+                        regUsernameEntered: reg_username,
+                        regPasswordEntered: reg_password
                     },
                     success: function(result) {
+                        alert("Your account has been created.");
                         consoleLog("Inside success function.");
                         consoleLog(result);
-                        setTimeout ("window.location='index.html'", 1000);
+                        setTimeout ("window.location='index.php'", 1000);
                     },
                     error: function() {
                         consoleLog("Did not execute php scripts");

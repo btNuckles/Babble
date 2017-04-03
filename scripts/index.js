@@ -62,14 +62,12 @@ function hideLoginOptions() {
   var loginBox = getLoginBox();
   var button = getLogoutButton();
   var button2 = getLoginButton();
-  var threadbutton = getCreateThreadButton();
   viewLink.style.display = 'block';
   editLink.style.display = 'block';
   regLink.style.display = 'none';
   loginBox.style.display = 'none';
   button.style.display = 'block';
   button2.style.display = 'none';
-  threadbutton.style.display = 'block';
 }
 
 function showLoginOptions() {
@@ -80,14 +78,12 @@ function showLoginOptions() {
   var loginBox = getLoginBox();
   var button = getLogoutButton();
   var button2 = getLoginButton();
-  var threadbutton = getCreateThreadButton();
   viewLink.style.display = 'none';
   editLink.style.display = 'none';
   regLink.style.display = 'block';
   loginBox.style.display = 'block';
   button.style.display = 'none';
   button2.style.display = 'block';
-  threadbutton.style.display = 'none';
 }
 
 function checkForSession() {
@@ -127,6 +123,7 @@ function createSubmitButtonEvent() {
             success: function(result) {
                 consoleLog(result);
                 checkForSession();
+                location.reload();
             },
             error: function() {
                 consoleLog("Did not execute php scripts");
@@ -148,6 +145,7 @@ function createLogoutButtonEvent() {
             success: function(result) {
                 consoleLog(result);
                 checkForSession();
+                location.reload();
             },
             error: function() {
                 consoleLog("Did not execute php scripts");

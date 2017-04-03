@@ -1,30 +1,31 @@
-var SUBMIT_BUTTON_SELECTOR = '[data-button="submit"]';
+var NEW_POST_SUBMIT_BUTTON_SELECTOR = '[data-button="post-submit"]';
 var TITLE_SELECTOR = 'title';
 var CONTENT_SELECTOR = 'content';
 
 function consoleLog(someMessage)
 { console.log(someMessage); }
 
-function getSubmitButton()
+function getNewPostSubmitButton()
 {
-    var button = document.querySelector(SUBMIT_BUTTON_SELECTOR);
+    var button = document.querySelector(NEW_POST_SUBMIT_BUTTON_SELECTOR);
     consoleLog("buttonAssigned");
     return button;
 }
 
 function createButtonEvent()
 {
-    var button = getSubmitButton();
-    $(button).click(function()
-    {
+    var button = getNewPostSubmitButton();
+    button.addEventListener('click', function() {
+        consoleLog("Submit was Clicked");
+    });
+    $(button).click(function() {
         consoleLog("Right before AJAX");
-        var title = $(document.getElementsByClassName(TITLE_SELECTOR)).val();
-        var content = $(document.getElementsByClassName(CONTENT_SELECTOR)).val();
-
+        var title = document.getElementById("post-title").value;
+        var content = document.getElementById("post-content").value;
         consoleLog("New Thread Created");
-
-        $.ajax(
-          {
+        consoleLog(title);
+        consoleLog(content);
+        $.ajax({
             url: "php/posttopic.php",
             type: "POST",
             data: {
@@ -34,18 +35,14 @@ function createButtonEvent()
             success: function(result) {
               consoleLog("Inside success function.");
               consoleLog(result);
-              window.location.href = 'index.html';
+              window.location.href = 'index.php';
             },
             error: function() {
               consoleLog("Did not execute php scripts");
             }
-          }
-        )
-      }
-    );
-
-  button.addEventListener('click', function() {consoleLog("Submit was Clicked"); });
-  consoleLog("Event created");
-}
+          })
+      })
+};
 
 createButtonEvent();
+consoleLog("Event created");

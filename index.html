@@ -15,11 +15,11 @@
       <div id="nav-container mr-auto" class="container-fluid">
         <a id="forum-name" class="navbar-brand" href="#">BABBLE</a>
         <ul id="nav-list" class="nav navbar-nav mr-auto" style="display:inline-block">
-          <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-item nav-link" href="viewprofile.html">Profile</a></li>
-          <li class="nav-item"><a class="nav-item nav-link" href="editprofile.html">Account</a></li>
+          <li class="nav-item active"><a class="nav-link" id="home-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-item nav-link" style="display:none" id="view-profile" href="viewprofile.html">Profile</a></li>
+          <li class="nav-item"><a class="nav-item nav-link" style="display:none" id="edit-profile" href="editprofile.html">Account</a></li>
           <li class="nav-item"><a class="nav-item nav-link" id="register-link" href="register.html">Register</a></li>
-          <li class="nav-item pull-right"><button data-button="submit" id="login-button" type="button" name="button" class="btn btn-primary my-2 my-sm-0">Login</button></li>
+          <li class="nav-item pull-right"><button class="btn btn-primary my-2 my-sm-0" id="login-button" data-button="submit" type="button" name="button">Login</button></li>
           <li class="nav-item pull-right"><button class="btn btn-primary my-2 my-sm-0" id="logout-button" data-button="logout" type="button" name="button">Logout</button></li>
           <li class="nav-item pull-right"><div id="login-box" class="form-inline my-2 my-lg-0">
               <!--<div id="login-box" class="form-inline">-->
@@ -65,7 +65,7 @@
 <!-- CREATE NEW TOPIC -->
 <center class="container">
     <a href="posttopic.html">
-        <input type="button" id="new-topic" value="Create New Topic" class="btn btn-primary" />
+        <input type="button" style="display:none" id="new-topic" value="Create New Topic" class="btn btn-primary" />
     </a>
     <p></p>
     <!-- CREATE NEW TOPIC -->

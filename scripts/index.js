@@ -1,10 +1,13 @@
 var SUBMIT_BUTTON_SELECTOR = '[data-button="submit"]';
+var VIEW_PROFILE_SELECTOR = 'view-profile';
+var EDIT_PROFILE_SELECTOR = 'edit-profile';
 var USERNAME_SELECTOR = 'username';
 var PASSWORD_SELECTOR = 'password';
 var LOGIN_BOX_SELECTOR = 'login-box';
 var LOGIN_BUTTON_SELECTOR = 'login-button';
 var REGISTER_LINK_SELECTOR = 'register-link';
 var LOGOUT_BUTTON_SELECTOR = 'logout-button';
+var CREATE_THREAD_BUTTON_SELECTOR = 'new-topic';
 
 function consoleLog(someMessage) {
     console.log(someMessage);
@@ -26,6 +29,16 @@ function getRegisterLink() {
     return regLink;
 }
 
+function getViewProfileLink() {
+    var viewLink = document.getElementById(VIEW_PROFILE_SELECTOR);
+    return viewLink;
+}
+
+function getEditProfileLink() {
+    var editLink = document.getElementById(EDIT_PROFILE_SELECTOR);
+    return editLink;
+}
+
 function getLogoutButton() {
   var button = document.getElementById(LOGOUT_BUTTON_SELECTOR);
   return button;
@@ -36,26 +49,45 @@ function getLoginButton() {
   return button;
 }
 
+function getCreateThreadButton() {
+    var button = document.getElementById(CREATE_THREAD_BUTTON_SELECTOR);
+    return button;
+}
+
 function hideLoginOptions() {
   console.log("hiding login options");
+  var viewLink = getViewProfileLink();
+  var editLink = getEditProfileLink();
   var regLink = getRegisterLink();
   var loginBox = getLoginBox();
   var button = getLogoutButton();
   var button2 = getLoginButton();
+  var threadbutton = getCreateThreadButton();
+  viewLink.style.display = 'block';
+  editLink.style.display = 'block';
   regLink.style.display = 'none';
   loginBox.style.display = 'none';
   button.style.display = 'block';
   button2.style.display = 'none';
+  threadbutton.style.display = 'block';
 }
 
 function showLoginOptions() {
   console.log("Showing login options");
+  var viewLink = getViewProfileLink();
+  var editLink = getEditProfileLink();
   var regLink = getRegisterLink();
   var loginBox = getLoginBox();
   var button = getLogoutButton();
+  var button2 = getLoginButton();
+  var threadbutton = getCreateThreadButton();
+  viewLink.style.display = 'none';
+  editLink.style.display = 'none';
   regLink.style.display = 'block';
   loginBox.style.display = 'block';
   button.style.display = 'none';
+  button2.style.display = 'block';
+  threadbutton.style.display = 'none';
 }
 
 function checkForSession() {
@@ -65,7 +97,7 @@ function checkForSession() {
     type: "GET",
     success: function(result) {
       console.log("Second ajax function");
-      console.log(result);
+      console.log("result is", result);
       if (result == "true") {
         hideLoginOptions();
       }
@@ -83,8 +115,8 @@ function createSubmitButtonEvent() {
     });
     $(button).click(function() {
         consoleLog('Right before AJAX');
-        var username = $(document.getElementsByClassName(USERNAME_SELECTOR)).val();
-        var password = $(document.getElementsByClassName(PASSWORD_SELECTOR)).val();
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
         $.ajax({
             url: "php/login.php",
             type: "POST",

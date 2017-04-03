@@ -17,7 +17,7 @@ $.ajax(
 	success: function(result) {
 	  consoleLog("Inside success function.");
 	  consoleLog(result);
-	  window.location.href = 'topic.html';
+	  window.location.href = 'topic.php';
 	},
 	error: function() {
 	  consoleLog("Did not execute php scripts");

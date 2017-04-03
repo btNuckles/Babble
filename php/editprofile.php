@@ -16,9 +16,11 @@ mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
 session_start();
 
 $login = $_SESSION['userlogin'];
-	
-$username = $_POST['usernameEntered'];
+
+$username = $_POST['newusernameEntered'];
 $karma = $_POST['karmaEntered'];
+
+echo "Im here";
 
 $sql = "UPDATE users SET username='$username', karma='$karma' WHERE username = '" . $login . "'";
 $insert= mysqli_query($conn, $sql);

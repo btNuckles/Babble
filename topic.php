@@ -17,11 +17,6 @@
     <!-- SCRIPT TO LOAD LATEST POSTS -->
     <script>
         function reloading() {
-            //code to extract POST from gettopic.php
-            var queryDict = {};
-            location.search.substr(1).split("&").forEach(function(item) {
-                queryDict[item.split("=")[0]] = item.split("=")[1]
-            });
 
             if (window.XMLHttpRequest) {
                 // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -37,11 +32,10 @@
                 }
             };
 
-            // POST to topic.php?
-            xmlhttp.open("GET", "php/topic.php?id=", true);
-            xmlhttp.send(queryDict);
+            xmlhttp.open("GET", "php/topic.php?id=" + " <?php echo $_GET["id"] ?> ", true);
+            xmlhttp.send();
         }
-
+		reloading();
         setInterval(function() {
             reloading();
         }, 1000);

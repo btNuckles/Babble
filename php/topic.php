@@ -10,13 +10,16 @@ if ($conn == false) {
 }
 mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
 // Grabbing title from 'threads' table
-$sql = "SELECT * FROM threads, posts WHERE thread_id = '$thread_id' AND threads.time_created = posts.time_created";
+$sql = "SELECT * FROM threads WHERE id = '$thread_id'";
 $result = mysqli_query($conn, $sql);
 $thread = mysqli_fetch_array($result);
+  echo '<table border="1" style="width:90%"><tr>';
   echo '<h3><center>Thread Title: ' . $thread['title'] . '</h3></center>';
   echo '</td>';
+  echo '</tr>';
+  echo $sql;
   // Grabbing posts from 'posts' table
-$sql = "SELECT * FROM posts WHERE thread_id = '$thread_id' ORDER BY time_created DESC LIMIT 10";
+$sql = "SELECT * FROM posts WHERE thread_id = '$thread_id'";
 $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result))
 {

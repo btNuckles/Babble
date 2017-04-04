@@ -26,7 +26,7 @@ if(isset($user_name)){
     } else {
         echo "user not taken";
         $time = date('Y/m/d H:i:s');
-        $sql = "INSERT INTO users"."(id, username, password, pass_salt, email, reg_date, post_count, karma, admin, banned)"."VALUES(0, '$user_name', '$pass_word', 0, '$email', '$time', 0, 0, 0, 0)";
+        $sql = "INSERT INTO users"."(id, username, password, pass_salt, email, reg_date, post_count, karma, admin, banned, displayname)"."VALUES(0, '$user_name', '$pass_word', 0, '$email', '$time', 0, 0, 0, 0, '$user_name')";
 
         $insert= mysqli_query($conn, $sql);
     }

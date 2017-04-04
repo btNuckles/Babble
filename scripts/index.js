@@ -99,6 +99,7 @@ function checkForSession() {
       }
       else {
         showLoginOptions();
+
       }
     }
   })
@@ -122,8 +123,17 @@ function createSubmitButtonEvent() {
             },
             success: function(result) {
                 consoleLog(result);
-                checkForSession();
-                location.reload();
+                if (result == "failed login.") {
+                    alert("Invalid login information.");
+                    checkForSession();
+                    location.reload();
+                } else {
+                    var printname = $('username').text();
+                    alert("Successful login! Hello, " + username + ".");
+                    checkForSession();
+                    location.reload();
+                }
+
             },
             error: function() {
                 consoleLog("Did not execute php scripts");

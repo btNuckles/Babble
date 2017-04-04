@@ -20,6 +20,7 @@ function createButtonEvent()
     $(button).click(function() {
         consoleLog("Right before AJAX");
         var content = document.getElementById("comment-box").value;
+		if (content.length >= 1) {
         consoleLog("New Post Created");
         consoleLog(content);
         $.ajax({
@@ -36,6 +37,8 @@ function createButtonEvent()
               consoleLog("Did not execute php scripts");
             }
           })
+		} else
+			alert("Please enter text to reply.");
       })
 };
 

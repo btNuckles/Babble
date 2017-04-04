@@ -3,7 +3,9 @@ var EMAIL_SELECTOR = 'email';
 var USERNAME_SELECTOR = 'username';
 var PASSWORD_SELECTOR = 'password';
 var PASSWORD_CONFIRMATION = 'password-confirmation';
+var USERNAME_ERROR = 'hidden-username-error';
 var PASSWORD_ERROR = 'hidden-password-error';
+var PASSWORD_ERROR2 = 'hidden-password-error2';
 var EMAIL_ERROR = 'hidden-email-error';
 
 function checkPassword(password, passwordConfirmation) {
@@ -38,6 +40,21 @@ function getRegSubmitButton() {
     return button;
 }
 
+function getUsernameErrorMsg() {
+    var msg = document.getElementById(USERNAME_ERROR);
+    return msg;
+}
+
+function showUsernameError() {
+    msg = getUsernameErrorMsg();
+    msg.style.display = 'block';
+}
+
+function hideUsernameError() {
+  msg = getUsernameErrorMsg();
+  msg.style.display = 'none';
+}
+
 function getPasswordErrorMsg() {
     var msg = document.getElementById(PASSWORD_ERROR);
     return msg;
@@ -46,6 +63,26 @@ function getPasswordErrorMsg() {
 function showPasswordError() {
     msg = getPasswordErrorMsg();
     msg.style.display = 'block';
+}
+
+function hidePasswordError() {
+  msg = getPasswordErrorMsg();
+  msg.style.display = 'none';
+}
+
+function getPasswordErrorMsg2() {
+    var msg = document.getElementById(PASSWORD_ERROR2);
+    return msg;
+}
+
+function showPasswordError2() {
+    msg = getPasswordErrorMsg2();
+    msg.style.display = 'block';
+}
+
+function hidePasswordError2() {
+    msg = getPasswordErrorMsg2();
+    msg.style.display = 'none';
 }
 
 function getEmailErrorMsg() {
@@ -63,11 +100,6 @@ function hideEmailError() {
   msg.style.display = 'none';
 }
 
-function hidePasswordError() {
-  msg = getPasswordErrorMsg();
-  msg.style.display = 'none';
-}
-
 function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
@@ -81,14 +113,34 @@ function createButtonEvent() {
         var reg_email = document.getElementById("email").value;
         var reg_password = document.getElementById("register-password").value;
         var reg_passwordConfirmation = document.getElementById("password-confirmation").value;
-
+        consoleLog(reg_password.length);
         if (validateEmail(reg_email) === true) {
-                hideEmailError();
+            hideEmailError();
             if (reg_password == reg_passwordConfirmation) {
                 hidePasswordError();
-                consoleLog(reg_password);
-                consoleLog(reg_passwordConfirmation);
                 consoleLog("Passwords Match");
+                var PassMatchFlag = true;
+            } else {
+                showPasswordError();
+                var PassMatchFlag = false;
+            }
+            if (reg_password.length >= 6) {
+                hidePasswordError2();
+                consoleLog("Passwords Length is Good");
+                var PassLengthFlag = true;
+            } else {
+                showPasswordError2();
+                var PassLengthFlag = false;
+            }
+            if (reg_username.length >= 4) {
+                hideUsernameError();
+                consoleLog("Username Length is Good");
+                var UserLengthFlag = true;
+            } else {
+                showUsernameError();
+                var UserLengthFlag = false;
+            }
+            if (PassMatchFlag && PassLengthFlag && UserLengthFlag) {
                 $.ajax({
                     url: "php/register.php",
                     type: "POST",
@@ -98,17 +150,23 @@ function createButtonEvent() {
                         regPasswordEntered: reg_password
                     },
                     success: function(result) {
-                        alert("Your account has been created.");
                         consoleLog("Inside success function.");
                         consoleLog(result);
-                        setTimeout ("window.location='index.php'", 1000);
+                        if (result == 'user exists') {
+                            alert("Username taken.");
+                            setTimeout ("window.location='register.php'", 1000);
+                        } else {
+                            alert("Your account has been created.");
+                            setTimeout ("window.location='index.php'", 1000);
+                        }
+
                     },
                     error: function() {
                         consoleLog("Did not execute php scripts");
                     }
                 })
             } else {
-                showPasswordError();
+                consoleLog("False flag detected.");
                 return;
             }
         } else {

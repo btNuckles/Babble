@@ -22,26 +22,29 @@ function createButtonEvent()
         consoleLog("Right before AJAX");
         var title = document.getElementById("post-title").value;
         var content = document.getElementById("post-content").value;
-        consoleLog("New Thread Created");
-        consoleLog(title);
-        consoleLog(content);
-        $.ajax({
-            url: "php/posttopic.php",
-            type: "POST",
-            data: {
-                titleEntered: title,
-                contentEntered: content
-            },
-            success: function(result) {
-              consoleLog("Inside success function.");
-              consoleLog(result);
-              window.location.href = 'index.php';
-            },
-            error: function() {
-              consoleLog("Did not execute php scripts");
-            }
-          })
-      })
+        
+        if ((title.length > 0 && title.length <= 64) && content.length >= 1) {
+            consoleLog("New Thread Created");
+            consoleLog(title);
+            consoleLog(content);
+            $.ajax({
+                url: "php/posttopic.php",
+                type: "POST",
+                data: {
+                    titleEntered: title,
+                    contentEntered: content
+                },
+                success: function(result) {
+                  consoleLog("Inside success function.");
+                  consoleLog(result);
+                  window.location.href = 'index.php';
+                },
+                error: function() {
+                  consoleLog("Did not execute php scripts");
+                }
+            })
+        } else
+    })
 };
 
 createButtonEvent();

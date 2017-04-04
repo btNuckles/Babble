@@ -16,7 +16,7 @@ $thread = mysqli_fetch_array($result);
   echo '<h3><center>Thread Title: ' . $thread['title'] . '</h3></center>';
   echo '</td>';
   // Grabbing posts from 'posts' table
-$sql = "SELECT * FROM posts WHERE thread_id = '$thread_id' ORDER BY time_created DESC LIMIT 10";
+$sql = "SELECT * FROM posts WHERE thread_id = '$thread_id' ORDER BY time_created ASC LIMIT 10";
 $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result))
 {

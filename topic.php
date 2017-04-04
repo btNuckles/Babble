@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start(); 
+$_SESSION["t_id"] = $_GET["id"];
+?>
 <!DOCTYPE html>
 
 <html>
@@ -41,8 +43,7 @@
         }, 1000);
     </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!-- <script src="scripts/topic.js" charset="utf-8"></script> -->
+
 
     </script>
     <!-- SCRIPT TO LOAD LATEST POSTS -->
@@ -57,17 +58,19 @@
 
     <!-- FORM FOR NEW POST -->
     <center>
-        <div class="container">
-            <div class="container">
-                <label for="comment-box">Content</label>
-                <b class="input-boxes"><textarea input class="form-control" id="comment-box" type="text" name="content"></textarea></b>
-                <p></p>
-                <button id="sub-button" data-button="submit" class="btn btn-primary" type="button" name="button">Reply</button>
-            </div>
-        </div>
+		<div id="reply-box" class="container">
+			<label for="comment-box">Comment</label>
+			<b class="input-boxes"><textarea input id="comment-box" class="form-control" type="text" name="content"></textarea></b>
+			<p></p>
+			<button id="reply-button" data-button="reply-submit" type="button" name="reply-button">Reply</button>
+		</div>
     </center>
+
     <!-- END FORM FOR NEW POST -->
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="scripts/topic.js" charset="utf-8"></script>	
+	
     <script src="scripts/index.js" charset="utf-8"></script>
     <?php if(isset($_SESSION['userlogin'])) {
         echo "<script> checkForSession(); </script>";

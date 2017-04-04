@@ -44,6 +44,7 @@ function createButtonEvent()
                 }
             })
         } else
+            alert("Invalid post creation. Please make sure the title length is 64 characters or less and there is content in the post.");
     })
 };
 

@@ -35,7 +35,7 @@ if ($pass_word == $resultArray[0]) {
     }
 }
 else {
-  die ("User account not found.");
+  die ("failed login.");
   session_start();
   session_destroy();
 }

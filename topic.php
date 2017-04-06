@@ -43,19 +43,6 @@ $_SESSION["t_id"] = $_GET["id"];
         }, 1000);
     </script>
 
-
-
-    </script>
-    <!-- SCRIPT TO LOAD LATEST POSTS -->
-
-    <!-- DISPLAY RECENT POSTS -->
-    <center>
-      <div id="loaddiv" class="container">
-          <table id="post-table" class="table table-hover"></table>
-      </div>
-    </center>
-    <!-- DISPLAY RECENT POSTS -->
-
     <!-- FORM FOR NEW POST -->
     <center>
 		<div id="reply-box" class="container">
@@ -67,6 +54,17 @@ $_SESSION["t_id"] = $_GET["id"];
     </center>
 
     <!-- END FORM FOR NEW POST -->
+
+    </script>
+    <!-- SCRIPT TO LOAD LATEST POSTS -->
+
+    <!-- DISPLAY RECENT POSTS -->
+    <center>
+      <div id="loaddiv" class="container">
+          <table id="post-table" class="table table-hover"></table>
+      </div>
+    </center>
+    <!-- DISPLAY RECENT POSTS -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="scripts/topic.js" charset="utf-8"></script>	

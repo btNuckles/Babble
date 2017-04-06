@@ -40,7 +40,7 @@ if(!isset($_SESSION['userlogin'])){
             xmlhttp.open("GET", "php/viewprofile.php", true);
             xmlhttp.send();
         }
-
+        reloading();
         setInterval(function() {
             reloading();
         }, 1000);

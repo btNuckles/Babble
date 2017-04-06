@@ -34,7 +34,7 @@
             xmlhttp.open("GET", "php/gettopic.php", true);
             xmlhttp.send();
         }
-
+        reloading();
         setInterval(function() {
             reloading();
         }, 1000);
@@ -44,7 +44,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="scripts/index.js" charset="utf-8"></script>
 </body>
-
 
 <?php if(isset($_SESSION['userlogin'])) {
     echo "<script> checkForSession(); </script>";

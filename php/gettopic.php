@@ -1,5 +1,5 @@
 <?php
-
+include "functions.php";
 $servername = "162.243.184.42";
 $username = "sysadmin";
 $password = "sys466";
@@ -13,7 +13,7 @@ if ($conn == false) {
 
 mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
 
-$sql = "SELECT * FROM threads WHERE board_id = '0' ORDER BY time_created DESC LIMIT 10";
+$sql = "SELECT * FROM threads WHERE board_id = '0' ORDER BY id DESC LIMIT 10";
 $result = mysqli_query($conn, $sql);
 
 //prepare the table
@@ -28,7 +28,7 @@ while($row = mysqli_fetch_array($result))
 {
     echo '<tr>';
         echo '<td class="leftpart">';
-        echo  ($row['board_id']);
+        echo  (GetUserFromId($conn,$row['author_id'])['username']);
         echo '<td class="leftpart">';
           echo '<h3><a href="topic.php?id=' . $row['id'] . '">' . $row['title'] . '</a><h3>';
           echo '</td>';

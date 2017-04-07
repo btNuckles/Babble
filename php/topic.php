@@ -16,12 +16,17 @@ $thread = mysqli_fetch_array($result);
   echo '<h3><center>Thread Title: ' . $thread['title'] . '</h3></center>';
   echo '</td>';
   // Grabbing posts from 'posts' table
-$sql = "SELECT * FROM posts WHERE thread_id = '$thread_id' ORDER BY time_created ASC LIMIT 10";
+$sql = "SELECT * FROM posts WHERE thread_id = '$thread_id' ORDER BY id DESC LIMIT 10";
 $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result))
 {
+    $id = $row['author_id'];
+    $author_sql = "SELECT * FROM users WHERE id = $id LIMIT 1";
+    $author_result = mysqli_query($conn, $author_sql);
+    $author_row = mysqli_fetch_array($author_result);
+
     echo '<tr>';
-    echo '<th>Author ID: ' . $row['author_id'] . '<br>Likes: '
+    echo '<th>Author: ' . $author_row['username'] . '<br>Likes: '
       . $row['likes'] . '<br>Dislikes: ' . $row['dislikes']
       . '<br>Date Posted: '  . date('M d, Y', strtotime($row['time_created']))
       . '<br>Time Posted: '  . date('H:i:s a', strtotime($row['time_created']));

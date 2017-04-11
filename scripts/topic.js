@@ -11,6 +11,11 @@ function getNewSubmitReplyButton()
     return button;
 }
 
+function clearText()
+{
+    document.getElementById("comment-box").value="";
+}
+
 function createButtonEvent()
 {
     var button = getNewSubmitReplyButton();
@@ -20,26 +25,28 @@ function createButtonEvent()
     $(button).click(function() {
         consoleLog("Right before AJAX");
         var content = document.getElementById("comment-box").value;
-		if (content.length >= 1) {
-        consoleLog("New Post Created");
-        consoleLog(content);
-        $.ajax({
-            url: "php/reply.php",
-            type: "POST",
-            data: {
-                contentEntered: content
-            },
-            success: function(result) {
-              consoleLog("Inside success function.");
-              consoleLog(result);
-            },
-            error: function() {
-              consoleLog("Did not execute php scripts");
-            }
-          })
-		} else
-			alert("Please enter text to reply.");
-      })
+        if (content.length >= 1) {
+            consoleLog("New Post Created");
+            consoleLog(content);
+            $.ajax({
+                url: "php/reply.php",
+                type: "POST",
+                data: {
+                    contentEntered: content
+                },
+                success: function(result) {
+                  consoleLog("Inside success function.");
+                  consoleLog(result);
+                },
+                error: function() {
+                  consoleLog("Did not execute php scripts");
+                }
+            })
+            clearText();
+        } else
+            alert("Please enter text to reply.");
+
+    })
 };
 
 createButtonEvent();

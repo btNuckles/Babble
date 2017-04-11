@@ -16,32 +16,113 @@ mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
 session_start();
 
 $login = $_SESSION['userlogin'];
-	
-$sql = "SELECT * FROM users WHERE username = '" . $login . "'";
-$result = mysqli_query($conn, $sql);
 
-//prepare the table
-echo '<table border="1">
-      <tr>
-        <th>Username</th>
-        <th>Karma</th>
-        </tr>';
+$usersql = "SELECT * FROM users WHERE username = '" . $login . "'";
+$userresult = mysqli_query($conn, $usersql);
 
-while($row = mysqli_fetch_array($result))
+
+while($userrow = mysqli_fetch_array($userresult))
 {
-    echo '<tr>';
-        echo '<td class="leftpart">';
-        echo  ($row['username']);
-        echo '<td class="leftpart">';
-          echo '<h3><a href="topic.php?id=' . $row['username'] . '">' . $row['karma'] . '</a><h3>';
-          echo '</td>';
+    # # will be added for avatar selection
+    #switch ($userrow['karma']) {
+    #    case 12:
+    #        echo "12";
+    #        break;
+    #    default:
+    #        echo "default";
+    #}
+    echo '<div class="container-fluid" style="padding-top:70px">';
+        echo '<div class="row content">';
+            echo '<div class="col-sm-4 col-lg-3 col-xs-12 sidenav" style="position:fixed">';
+                echo '<img src="http://i.imgur.com/K93qbBF.png" alt="Avatar" style="width:250px;height:250px;">';
+                echo '<h4>' . $userrow['username'] . '\'s Profile</h4>';
+                echo '<ul class="nav nav-pills nav-stacked">';
+                    echo '<li class="active"><a href="#home">Home</a></li>';
+                    echo '<li><a href="#friends">Friends</a></li>';
+                echo '</ul>';
+                echo '<div class="row">';
+                    echo '<div class="col-sm-6">';
+                        echo '<h4>Display Name</h4>';
+                        echo '<p style="border:3px; border-style:solid; border-color:#D3D3D3; padding: 1em;">';
+                        if ( strlen($userrow['displayname']) > 12) {
+                            echo substr($userrow['displayname'], 0, 12);
+                            echo '...';
+                        } else {
+                            echo $userrow['displayname'];
+                        }
+                        echo '</p>';
+                    echo '</div>';
+                    echo '<div class="col-sm-6">';
+                        echo '<h4>Karma</h4>';
+                        echo '<p style="border:3px; border-style:solid; border-color:#D3D3D3; padding: 1em;">' . $userrow['karma'] . '</p>';
+                    echo '</div>';
+                echo '</div>';
+                echo '<div class="row">';
+                    echo '<h4>Bio</h4>';
+                    echo '<p style="border:3px; border-style:solid; border-color:#D3D3D3; padding: 1em;">' . $userrow['bio'] . '</p>';
+                echo '</div>';
+            echo '</div>';
 
-    echo '</tr>';
+            echo '<div class="col-sm-8 col-sm-offset-4 col-lg-9 col-lg-offset-3 col-xs-12" style="position:relative">';
+                echo '<h4 id="home"><small>RECENT POSTS</small></h4>';
+                echo '<hr>';
+
+
+                $postsql = "SELECT * FROM posts WHERE author_id = '" . $userrow['id'] . "'";
+                $postresult = mysqli_query($conn, $postsql);
+                while($postrow = mysqli_fetch_array($postresult)) {
+
+                    $threadsql = "SELECT title FROM threads WHERE id = '" . $postrow['thread_id'] . "'";
+                    $threadresult = mysqli_query($conn, $threadsql);
+                    while($threadrow = mysqli_fetch_array($threadresult)) {
+                        echo '<h2>' . $threadrow['title'] . '</h2>';
+                    }
+                    echo '<h5><span class="glyphicon glyphicon-time"></span> Post by ' . $userrow['username'] . ', ' . $postrow['time_created'] . '.</h5>';
+                    echo '<h5><span class="label label-success">General</span></h5>';
+                    echo '<br>';
+                    echo '<p>' . $postrow['content'] . '</p>';
+                    echo '<hr>';
+                }
+                echo '<h4 id ="friends"><small>FRIENDS</small></h4>';
+                echo '<hr>';
+                echo '<div class="row">';
+                    echo '<div class="col-sm-2">';
+                        echo 'Friend 1';
+                        echo '<br>';
+                        echo '<img src="http://i.imgur.com/K93qbBF.png" alt="Avatar" style="width:250px;max-width:50%;height:auto">';
+                    echo '</div>';
+                    echo '<div class="col-sm-2">';
+                        echo 'Friend 2';
+                        echo '<br>';
+                        echo '<img src="http://i.imgur.com/K93qbBF.png" alt="Avatar" style="width:250px;max-width:50%;height:auto">';
+                    echo '</div>';
+                    echo '<div class="col-sm-2">';
+                        echo 'Friend 3';
+                        echo '<br>';
+                        echo '<img src="http://i.imgur.com/K93qbBF.png" alt="Avatar" style="width:250px;max-width:50%;height:auto">';
+                    echo '</div>';
+                    echo '<div class="col-sm-2">';
+                        echo 'Friend 4';
+                        echo '<br>';
+                        echo '<img src="http://i.imgur.com/K93qbBF.png" alt="Avatar" style="width:250px;max-width:50%;height:auto">';
+                    echo '</div>';
+                    echo '<div class="col-sm-2">';
+                        echo 'Friend 5';
+                        echo '<br>';
+                        echo '<img src="http://i.imgur.com/K93qbBF.png" alt="Avatar" style="width:250px;max-width:50%;height:auto">';
+                    echo '</div>';
+                    echo '<div class="col-sm-2">';
+                        echo 'Friend 6';
+                        echo '<br>';
+                        echo '<img src="http://i.imgur.com/K93qbBF.png" alt="Avatar" style="width:250px;max-width:50%;height:auto">';
+                    echo '</div>';
+                echo '</div>';
+                echo '<hr>';
+            echo '</div>';
+        echo '</div>';
+    echo '</div>';
 }
 
 mysqli_close($conn);
 
 ?>
-
-</body>
-</html>

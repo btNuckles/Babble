@@ -1,12 +1,15 @@
 var REG_SUBMIT_BUTTON_SELECTOR = '[data-button="reg-submit"]';
 var EMAIL_SELECTOR = 'email';
-var USERNAME_SELECTOR = 'username';
-var PASSWORD_SELECTOR = 'password';
+var USERNAME_SELECTOR = 'reg-username';
+var PASSWORD_SELECTOR = 'reg-password';
 var PASSWORD_CONFIRMATION = 'password-confirmation';
 var USERNAME_ERROR = 'hidden-username-error';
 var PASSWORD_ERROR = 'hidden-password-error';
 var PASSWORD_ERROR2 = 'hidden-password-error2';
 var EMAIL_ERROR = 'hidden-email-error';
+var EMPTY_EMAIL_ERROR = 'hidden-email-empty-error';
+var EMPTY_USERNAME_ERROR = 'hidden-username-empty-error';
+var EMPTY_PASSWORD_ERROR = 'hidden-password-empty-error';
 
 function checkPassword(password, passwordConfirmation) {
     if (password == password) {
@@ -100,6 +103,53 @@ function hideEmailError() {
   msg.style.display = 'none';
 }
 
+//EMPTY ERRORS
+function getEmptyEmailErrorMsg() {
+    var msg = document.getElementById(EMPTY_EMAIL_ERROR);
+    return msg;
+}
+
+function showEmptyEmailError() {
+    var msg = getEmptyEmailErrorMsg();
+    msg.style.display = 'block';
+}
+
+function hideEmptyEmailError() {
+  var msg = getEmptyEmailErrorMsg();
+  msg.style.display = 'none';
+}
+
+function getEmptyUsernameErrorMsg() {
+    var msg = document.getElementById(EMPTY_USERNAME_ERROR);
+    return msg;
+}
+
+function showEmptyUsernameError() {
+    var msg = getEmptyUsernameErrorMsg();
+    msg.style.display = 'block';
+}
+
+function hideEmptyUsernameError() {
+  var msg = getEmptyUsernameErrorMsg();
+  msg.style.display = 'none';
+}
+
+function getEmptyPasswordErrorMsg() {
+    var msg = document.getElementById(EMPTY_PASSWORD_ERROR);
+    return msg;
+}
+
+function showEmptyPasswordError() {
+    var msg = getEmptyPasswordErrorMsg();
+    msg.style.display = 'block';
+}
+
+function hideEmptyPasswordError() {
+  var msg = getEmptyPasswordErrorMsg();
+  msg.style.display = 'none';
+}
+
+
 function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
@@ -126,18 +176,30 @@ function createButtonEvent() {
             }
             if (reg_password.length >= 6) {
                 hidePasswordError2();
+                hideEmptyPasswordError();
                 consoleLog("Passwords Length is Good");
                 var PassLengthFlag = true;
+            } else if (reg_password.length == 0) {
+                showEmptyPasswordError();
+                hidePasswordError2();
+                var PassLengthFlag = false;
             } else {
                 showPasswordError2();
+                hideEmptyPasswordError();
                 var PassLengthFlag = false;
             }
             if (reg_username.length >= 4) {
                 hideUsernameError();
+                hideEmptyUsernameError();
                 consoleLog("Username Length is Good");
                 var UserLengthFlag = true;
+            } else if (reg_username.length == 0) {
+                showEmptyUsernameError();
+                hideUsernameError();
+                var UserLengthFlag = false;
             } else {
                 showUsernameError();
+                hideEmptyUsernameError();
                 var UserLengthFlag = false;
             }
             if (PassMatchFlag && PassLengthFlag && UserLengthFlag) {
@@ -156,7 +218,7 @@ function createButtonEvent() {
                             alert("Username taken.");
                             setTimeout ("window.location='register.php'", 1000);
                         } else {
-                            alert("Your account has been created.");
+                            alert("Your account has been created. Please login.");
                             setTimeout ("window.location='index.php'", 1000);
                         }
 

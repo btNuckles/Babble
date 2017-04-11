@@ -35,11 +35,15 @@ while($userrow = mysqli_fetch_array($userresult))
         echo '<div class="row content">';
             echo '<div class="col-sm-4 col-lg-3 col-xs-12 sidenav" style="position:fixed">';
                 echo '<img src="http://i.imgur.com/K93qbBF.png" alt="Avatar" style="width:250px;height:250px;">';
-                echo '<h4>' . $userrow['username'] . '\'s Profile</h4>';
+                echo '<p style="border:3px; border-style:solid; border-color:#000000; padding: 1em; background-color:#D3D3D3; font-size:130%;">' . $userrow['username'] . '</p>';
+                #echo '<h4>' . $userrow['username'] . '\'s Profile</h4>';
+                echo '<hr>';
                 echo '<ul class="nav nav-pills nav-stacked">';
-                    echo '<li class="active"><a href="#home">Home</a></li>';
+                    #echo '<li class="active"><a href="#home">' . $userrow['username'] . '\'s Profile</a></li>';
+                    echo '<li><a href="#home">Recent Posts</a></li>';
                     echo '<li><a href="#friends">Friends</a></li>';
                 echo '</ul>';
+                echo '<hr>';
                 echo '<div class="row">';
                     echo '<div class="col-sm-6">';
                         echo '<h4>Display Name</h4>';
@@ -61,6 +65,16 @@ while($userrow = mysqli_fetch_array($userresult))
                     echo '<h4>Bio</h4>';
                     echo '<p style="border:3px; border-style:solid; border-color:#D3D3D3; padding: 1em;">' . $userrow['bio'] . '</p>';
                 echo '</div>';
+                echo '<hr>';
+                echo '<ul class="nav nav-pills nav-stacked">';
+                    echo '<li class="active"><a href="viewmessage.php">View Messages</a></li>';
+                echo '</ul>';
+                echo '<hr>';
+                echo '<ul class="nav nav-pills nav-stacked">';
+                    echo '<li class="active"><a href="sendmessage.php">Send Message</a></li>';
+                echo '</ul>';
+                echo '<hr>';
+
             echo '</div>';
 
             echo '<div class="col-sm-8 col-sm-offset-4 col-lg-9 col-lg-offset-3 col-xs-12" style="position:relative">';
@@ -68,7 +82,7 @@ while($userrow = mysqli_fetch_array($userresult))
                 echo '<hr>';
 
 
-                $postsql = "SELECT * FROM posts WHERE author_id = '" . $userrow['id'] . "'";
+                $postsql = "SELECT * FROM posts WHERE author_id = '" . $userrow['id'] . "' ORDER BY time_created DESC";
                 $postresult = mysqli_query($conn, $postsql);
                 while($postrow = mysqli_fetch_array($postresult)) {
 

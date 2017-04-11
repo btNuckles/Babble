@@ -7,13 +7,17 @@
     <meta charset="utf-8">
     <title>Babble</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
     <link rel="stylesheet" href="stylesheets/indexstyles.css">
 </head>
 
 <body>
     <?php include_once('header.php'); ?>
     <!-- SCRIPT TO LOAD LATEST TOPICS -->
+    <div id="topics" class="container">
+    </div>
+
     <script>
         function reloading() {
 
@@ -27,7 +31,24 @@
 
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("post-table").innerHTML = this.responseText;
+                  /* DYNAMIC DIV CREATION
+                  var newDivCenter = document.createElement('div');
+                  var newDiv = document.createElement('div');
+                  var divText = document.createElement('text');
+                  var linebreak1 = document.createElement('br')
+                  var linebreak2 = document.createElement('br')
+                  newDivCenter.className = 'row text-center my-rant';
+                  newDiv.className = 'container';
+                  divText.className = 'topic-text';
+                  divText.innerHTML = this.responseText;
+                  newDiv.appendChild(divText);
+                  newDivCenter.appendChild(newDiv);
+                  $("#topics").append(newDivCenter);
+                  $("#topics").append(linebreak1);
+                  $("#topics").append(linebreak2);
+                  */
+
+                  document.getElementById("post-table").innerHTML = this.responseText;
                 }
             };
 
@@ -39,6 +60,7 @@
             reloading();
         }, 1000);
     </script>
+
     <!-- SCRIPT TO LOAD LATEST TOPICS -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

@@ -16,7 +16,21 @@ mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
 $sql = "SELECT * FROM threads WHERE board_id = '0' ORDER BY id DESC LIMIT 10";
 $result = mysqli_query($conn, $sql);
 
+
+
+echo '<div class=\'container\'>
+      <span class=\'username\'>Username:    Date/Time:    Likes: </span>
+      <br></br>
+      <text class=\'pre\'>text</text>
+      </div>';
+
+while($div = mysqli_fetch_array($result))
+    {
+
+    }
+
 //prepare the table
+/*
 echo '<table border="1">
       <tr>
         <th>Author</th>
@@ -39,6 +53,7 @@ while($row = mysqli_fetch_array($result))
         echo '</td>';
     echo '</tr>';
 }
+*/
 
 mysqli_close($conn);
 

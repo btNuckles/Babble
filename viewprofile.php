@@ -55,7 +55,6 @@ if(!isset($_SESSION['userlogin'])){
      } ?>
 
 	<center>
-	<h1>Viewing Profile</h1>
     <div id="loaddiv"></div>
 	</center>
 </body>

@@ -18,14 +18,19 @@ session_start();
 $login = $_SESSION['userlogin'];
 
 $username = $_POST['newusernameEntered'];
-$karma = $_POST['karmaEntered'];
+$bio = $_POST['bioEntered'];
 
-echo "Im here";
+if ($username != "null entry") {
+    $sql = "UPDATE users SET displayname = '$username' WHERE username = '" . $login . "'";
+    $insert= mysqli_query($conn, $sql);
+}
+if ($bio != "null entry") {
+    $sql = "UPDATE users SET bio = '$bio' WHERE username = '" . $login . "'";
+    $insert= mysqli_query($conn, $sql);
+}
 
-$sql = "UPDATE users SET username='$username', karma='$karma' WHERE username = '" . $login . "'";
-$insert= mysqli_query($conn, $sql);
 
-$_SESSION['userlogin'] = $username;
+#$_SESSION['userlogin'] = $username;
 
 
 ?>

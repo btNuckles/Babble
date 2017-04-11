@@ -50,7 +50,7 @@
  } ?>
 
 <!-- CREATE NEW TOPIC -->
-<center class="container">
+<center class="container"  style="padding-top:70px">
     <a href="posttopic.php">
         <?php if (isset($_SESSION['userlogin'])) { ?>
         <input type="button" id="new-topic" value="Create New Topic" class="btn btn-primary" />

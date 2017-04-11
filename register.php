@@ -14,7 +14,7 @@
 <body>
     <?php include_once('header.php'); ?>
 
-    <div class="register-container">
+    <div class="register-container" style="padding-top:70px">
         <div class="register-box">
           <h1>Create Your Account</h1>
             <p class="input-boxes"><input class="form-control" id="email" type="text" name="email" placeholder="Email Address"></p>

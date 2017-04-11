@@ -20,7 +20,7 @@ if(!isset($_SESSION['userlogin'])){
 
     <!-- FORM FOR NEW THREAD -->
 
-    <div id="post-box" class="container">
+    <div id="post-box" class="container" style="padding-top:70px">
         <h1>Create New Topic</h1>
         <label for="post-title">Title</label>
         <b class="input-boxes"><input id="post-title" class="form-control" type="text" name="title"></b>

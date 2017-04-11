@@ -18,11 +18,11 @@ $_SESSION["p_id"] = $_GET["postid"];
 
 <body>
     <?php include_once('header.php'); ?>
-    
-    <script type="text/javascript"> 
+
+    <script type="text/javascript">
     var thread_id = <?php echo json_encode($_SESSION["t_id"]); ?>;
     </script>
-    
+
     <!-- SCRIPT TO LOAD LATEST POSTS -->
     <script>
     function reloading() {
@@ -46,10 +46,10 @@ $_SESSION["p_id"] = $_GET["postid"];
     reloading();
     </script>
     <!-- END SCRIPT TO LOAD LATEST POSTS -->
-    
+
     <!-- FORM FOR EDIT POST -->
     <center>
-        <div id="edit-box" class="container">
+        <div id="edit-box" class="container"  style="padding-top:70px">
             <label for="commentedit-box">Edit</label>
             <b class="input-boxes"><textarea input id="commentedit-box" class="form-control" type="text" name="content"></textarea></b>
             <p></p>
@@ -57,25 +57,25 @@ $_SESSION["p_id"] = $_GET["postid"];
             <button id="delete-button" data-button="delete-submit" type="btn btn-primary" name="delete-button">Delete</button>
         </div>
     </center>
-    
+
     <!-- END FORM FOR EDIT POST -->
-    
+
     <!-- DISPLAY POST -->
     <center>
       <div id="loaddiv" class="container">
           <table id="post-table" class="table table-hover"></table>
       </div>
     </center>
-    <!-- END DISPLAY POST -->    
-    
+    <!-- END DISPLAY POST -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="scripts/editpost.js" charset="utf-8"></script>
-    
+
     <script src="scripts/index.js" charset="utf-8"></script>
     <?php if(isset($_SESSION['userlogin'])) {
         echo "<script> checkForSession(); </script>";
     } ?>
-    
+
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-<?php session_start(); 
+<?php session_start();
 $_SESSION["t_id"] = $_GET["id"];
 ?>
 <!DOCTYPE html>
@@ -43,11 +43,11 @@ $_SESSION["t_id"] = $_GET["id"];
         }, 1000);
     </script>
     <!-- END SCRIPT TO LOAD LATEST POSTS -->
-    
+
     <?php if (isset($_SESSION['userlogin'])) { ?>
         <!-- FORM FOR NEW POST -->
         <center>
-            <div id="reply-box" class="container">
+            <div id="reply-box" class="container" style="padding-top:70px">
                 <label for="comment-box">Comment</label>
                 <b class="input-boxes"><textarea input id="comment-box" class="form-control" type="text" name="content"></textarea></b>
                 <p></p>
@@ -56,7 +56,7 @@ $_SESSION["t_id"] = $_GET["id"];
         </center>
         <!-- END FORM FOR NEW POST -->
     <?php } ?>
-    
+
     <!-- DISPLAY RECENT POSTS -->
     <center>
       <div id="loaddiv" class="container">
@@ -64,12 +64,12 @@ $_SESSION["t_id"] = $_GET["id"];
       </div>
     </center>
     <!-- END DISPLAY RECENT POSTS -->
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <?php if (isset($_SESSION['userlogin'])) { ?>
-        <script src="scripts/topic.js" charset="utf-8"></script>	
+        <script src="scripts/topic.js" charset="utf-8"></script>
     <?php } ?>
-    
+
     <script src="scripts/index.js" charset="utf-8"></script>
     <?php if(isset($_SESSION['userlogin'])) {
         echo "<script> checkForSession(); </script>";

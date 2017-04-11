@@ -19,10 +19,13 @@
           <h1>Create Your Account</h1>
             <p class="input-boxes"><input class="form-control" id="email" type="text" name="email" placeholder="Email Address"></p>
             <p id="hidden-email-error">Email address is not valid.</p>
-            <p class="input-boxes"><input class="form-control" id="register-username" type="text" name="username" placeholder="Username"></p>
+            <p id="hidden-email-empty-error" style="color:red; display:none">* The email field must be filled out.</p>
+            <p class="input-boxes"><input class="form-control" id="register-username" type="text" name="reg-username" placeholder="Username"></p>
             <p id="hidden-username-error" style="color:red; display:none">Username is too short (Must be at least 4 characters).</p>
-            <p class="input-boxes"><input class="form-control" id="register-password" type="password" name="password" placeholder="Password"></p>
-            <p class="input-boxes"><input class="form-control" id="password-confirmation" type="password" name="password2" placeholder="Confirm Password"></p>
+            <p id="hidden-username-empty-error" style="color:red; display:none">* The username field must be filled out.</p>
+            <p class="input-boxes"><input class="form-control" id="register-password" type="password" name="reg-password" placeholder="Password"></p>
+            <p id="hidden-password-empty-error" style="color:red; display:none">* The password field must be filled out.</p>
+            <p class="input-boxes"><input class="form-control" id="password-confirmation" type="password" name="reg-password2" placeholder="Confirm Password"></p>
             <p id="hidden-password-error" style="color:red; display:none">Passwords do not match.</p>
             <p id="hidden-password-error2" style="color:red; display:none">Password is too short (Must be at least 6 characters).</p>
             <button id="sub-button" class="btn btn-primary" data-button="reg-submit" type="button" name="reg-button">Submit</button>

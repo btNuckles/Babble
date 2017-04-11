@@ -59,7 +59,7 @@ $_SESSION["t_id"] = $_GET["id"];
 
     <!-- DISPLAY RECENT POSTS -->
     <center>
-      <div id="loaddiv" class="container">
+      <div id="loaddiv" class="container" style="padding-top:70px">
           <table id="post-table" class="table table-hover"></table>
       </div>
     </center>

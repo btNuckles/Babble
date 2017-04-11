@@ -1,4 +1,4 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-fixed-top">
   <div id="nav-container mr-auto" class="container-fluid">
     <a id="forum-name" class="navbar-brand" href="#">BABBLE</a>
     <ul id="nav-list" class="nav navbar-nav mr-auto" style="display:inline-block">

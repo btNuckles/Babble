@@ -20,12 +20,12 @@ if(!isset($_SESSION['userlogin'])){
     <?php include_once('header.php'); ?>
     <!-- EDIT USER PROFILE FORM -->
 
-          <div id="edit-box" class="container">
+          <div id="edit-box" class="container" style="padding-top:70px">
               <h1>Edit Your Profile</h1>
-                <label id="new-username-label" for="edit-username">New Username</label>
+                <label id="new-username-label" for="edit-username">New Display Name</label>
                 <b class="input-boxes"><input class="form-control" id="newusername" type="text" name="newusername"></b><p></p>
-                <label id="bio-label" for="karma">Karma</label>
-                <b class="input-boxes"><textarea input class="form-control" id="karma" type="text" name="karma"></textarea></b><p></p>
+                <label id="bio-label" for="bio">Bio</label>
+                <b class="input-boxes"><textarea input class="form-control" id="bio" type="text" name="bio"></textarea></b><p></p>
                 <button id="sub-button" class="btn btn-primary" data-button="edit-submit" type="button" name="edit-button">Save Changes</button>
             </div>
     <!-- END EDIT USER PROFILE FORM -->

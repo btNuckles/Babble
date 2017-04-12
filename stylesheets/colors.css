@@ -1,0 +1,29 @@
+body {
+  background-color: orange;
+  color: white;
+}
+
+.nav {
+  background-color: navy;
+  color: white;
+}
+
+.navbar-brand {
+  background-color: navy;
+  color: white;
+}
+
+.navbar {
+  background-color: navy;
+  color: white;
+}
+
+.nav-link {
+  background-color: navy;
+  color: white;
+}
+
+#nav-container {
+  background-color: navy;
+  color: white;
+}

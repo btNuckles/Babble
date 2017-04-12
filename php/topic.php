@@ -47,5 +47,18 @@ while($row = mysqli_fetch_array($result))
     echo '</td>';
     echo '</tr>';
 }
+
+$sql = "SELECT author_id FROM posts WHERE thread_id = '$thread_id' ORDER BY id DESC LIMIT 10"
+$users = mysqli_query($conn, $sql);
+$sql = "SELECT time_create FROM posts WHERE thread_id = '$thread_id' ORDER BY id DESC LIMIT 10"
+$timestamps = mysqli_query($conn, $sql);
+$sql = "SELECT likes FROM posts WHERE thread_id = '$thread_id' ORDER BY id DESC LIMIT 10"
+$likes = mysqli_query($conn, $sql);
+
+for($i = 0; $i < count ($username); $i++)
+{
+
+}
+
 mysqli_close($conn);
 ?>

@@ -1,0 +1,15 @@
+.post-container {
+  background: black;
+  background-color: white;
+}
+
+.center-div {
+  width: 100%;
+  -ms-align-items: center;
+  align-content: center;
+}
+
+h1 {
+  -ms-align-items: center;
+  align-items: center;
+}

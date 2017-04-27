@@ -12,6 +12,7 @@ $_SESSION["t_id"] = $_GET["id"];
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/indexstyles.css">
     <link rel="stylesheet" href="stylesheets/colors.css">
+    <link rel-"stylesheet" href="stylesheets/postbox.css">
 </head>
 
 <body>
@@ -29,7 +30,7 @@ $_SESSION["t_id"] = $_GET["id"];
                 xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
 
-            xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function() { 
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("post-table").innerHTML = this.responseText;
                 }
@@ -45,25 +46,22 @@ $_SESSION["t_id"] = $_GET["id"];
     </script>
     <!-- END SCRIPT TO LOAD LATEST POSTS -->
 
-    <?php if (isset($_SESSION['userlogin'])) { ?>
-        <!-- FORM FOR NEW POST -->
-        <center>
-            <div id="reply-box" class="container" style="padding-top:70px">
-                <label for="comment-box">Comment</label>
-                <b class="input-boxes"><textarea input id="comment-box" class="form-control" type="text" name="content"></textarea></b>
-                <p></p>
-                <button id="reply-button" data-button="reply-submit" type="btn btn-primary" name="reply-button">Reply</button>
-            </div>
-        </center>
-        <!-- END FORM FOR NEW POST -->
-    <?php } ?>
-
     <!-- DISPLAY RECENT POSTS -->
-    <center>
-      <div id="loaddiv" class="container" style="padding-top:70px">
+    <div class="center-div">
+      <div id="loaddiv" class="container" style="padding-top:70px" overflow:auto>
+        <?php if (isset($_SESSION['userlogin'])) { ?>
+            <!-- FORM FOR NEW POST -->
+                <div id="reply-box" class="container" style="padding-top:70px">
+                    <label for="comment-box">Comment</label>
+                    <b class="input-boxes"><textarea input id="comment-box" class="form-control" type="text" name="content"></textarea></b>
+                    <p></p>
+                    <button id="reply-button" data-button="reply-submit" class="btn btn-primary" name="reply-button">Reply</button>
+                </div>
+            <!-- END FORM FOR NEW POST -->
+        <?php } ?>
           <table id="post-table" class="table table-hover"></table>
       </div>
-    </center>
+    </div>
     <!-- END DISPLAY RECENT POSTS -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -75,6 +73,7 @@ $_SESSION["t_id"] = $_GET["id"];
     <?php if(isset($_SESSION['userlogin'])) {
         echo "<script> checkForSession(); </script>";
      } ?>
+
 
 </body>
 

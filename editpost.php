@@ -15,6 +15,7 @@ $_SESSION["p_id"] = $_GET["postid"];
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/indexstyles.css">
     <link rel="stylesheet" href="stylesheets/colors.css">
+    <link rel-"stylesheet" href="stylesheets/postbox.css">
 </head>
 
 <body>
@@ -49,24 +50,22 @@ $_SESSION["p_id"] = $_GET["postid"];
     <!-- END SCRIPT TO LOAD LATEST POSTS -->
 
     <!-- FORM FOR EDIT POST -->
-    <center>
-        <div id="edit-box" class="container"  style="padding-top:70px">
+
+    <!-- END FORM FOR EDIT POST -->
+
+    <!-- DISPLAY POST -->
+    <div class="center-div">
+      <div id="loaddiv" class="container" style="padding-top:70px" overflow: auto>
+        <div id="edit-box">
             <label for="commentedit-box">Edit</label>
             <b class="input-boxes"><textarea input id="commentedit-box" class="form-control" type="text" name="content"></textarea></b>
             <p></p>
             <button id="edit-button" data-button="edit-submit" type="btn btn-primary" name="edit-button">Submit Edit</button>
             <button id="delete-button" data-button="delete-submit" type="btn btn-primary" name="delete-button">Delete</button>
         </div>
-    </center>
-
-    <!-- END FORM FOR EDIT POST -->
-
-    <!-- DISPLAY POST -->
-    <center>
-      <div id="loaddiv" class="container">
           <table id="post-table" class="table table-hover"></table>
       </div>
-    </center>
+    </div>
     <!-- END DISPLAY POST -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

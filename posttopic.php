@@ -20,7 +20,8 @@ if(!isset($_SESSION['userlogin'])){
     <?php include_once('header.php'); ?>
 
     <!-- FORM FOR NEW THREAD -->
-
+    <div class="center-div">
+        <div id="loaddiv" class="container" style="padding-top:70px" overflow: auto>
     <div id="post-box" class="container" style="padding-top:70px">
         <h1>Create New Topic</h1>
         <label for="post-title">Title</label>
@@ -31,6 +32,8 @@ if(!isset($_SESSION['userlogin'])){
         <p></p>
         <button id="post-button" data-button="post-submit" type="button" name="post-button">Create Topic</button>
     </div>
+  </div>
+</div>
     <!-- END FORM FOR NEW THREAD -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

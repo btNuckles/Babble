@@ -15,12 +15,14 @@ if(!isset($_SESSION['userlogin'])){
     <link rel="stylesheet" href="stylesheets/editprofile.css">
     <link rel="stylesheet" href="stylesheets/indexstyles.css">
     <link rel="stylesheet" href="stylesheets/colors.css">
+    <link rel="stylesheet" href="stylesheets/postbox.cs">
 </head>
 
 <body>
     <?php include_once('header.php'); ?>
     <!-- EDIT USER PROFILE FORM -->
-
+    <div class="center-div">
+      <div id="loaddiv" class="container" style="padding-top:70px" overflow: auto>
           <div id="edit-box" class="container" style="padding-top:70px">
               <h1>Edit Your Profile</h1>
                 <label id="new-username-label" for="edit-username">New Display Name</label>
@@ -29,6 +31,8 @@ if(!isset($_SESSION['userlogin'])){
                 <b class="input-boxes"><textarea input class="form-control" id="bio" type="text" name="bio"></textarea></b><p></p>
                 <button id="sub-button" class="btn btn-primary" data-button="edit-submit" type="button" name="edit-button">Save Changes</button>
             </div>
+          </div>
+    </div>
     <!-- END EDIT USER PROFILE FORM -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

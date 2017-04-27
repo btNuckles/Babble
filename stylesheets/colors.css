@@ -1,6 +1,11 @@
-body {
+html, body {
   background-color: orange;
   color: white;
+  height: 100%;
+}
+
+center {
+  height: 100%;
 }
 
 .nav {
@@ -21,6 +26,14 @@ body {
 .nav-link {
   background-color: navy;
   color: white;
+}
+
+#loaddiv {
+  background-color: white;
+  color: black;
+  width:85%;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 #nav-container {

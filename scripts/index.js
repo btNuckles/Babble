@@ -40,13 +40,13 @@ function getEditProfileLink() {
 }
 
 function getLogoutButton() {
-  var button = document.getElementById(LOGOUT_BUTTON_SELECTOR);
-  return button;
+    var button = document.getElementById(LOGOUT_BUTTON_SELECTOR);
+    return button;
 }
 
 function getLoginButton() {
-  var button = document.getElementById(LOGIN_BUTTON_SELECTOR);
-  return button;
+    var button = document.getElementById(LOGIN_BUTTON_SELECTOR);
+    return button;
 }
 
 function getCreateThreadButton() {
@@ -55,54 +55,56 @@ function getCreateThreadButton() {
 }
 
 function hideLoginOptions() {
-  console.log("hiding login options");
-  var viewLink = getViewProfileLink();
-  var editLink = getEditProfileLink();
-  var regLink = getRegisterLink();
-  var loginBox = getLoginBox();
-  var button = getLogoutButton();
-  var button2 = getLoginButton();
-  viewLink.style.display = 'block';
-  editLink.style.display = 'block';
-  regLink.style.display = 'none';
-  loginBox.style.display = 'none';
-  button.style.display = 'block';
-  button2.style.display = 'none';
+    console.log("hiding login options");
+    var viewLink = getViewProfileLink();
+    var editLink = getEditProfileLink();
+    var regLink = getRegisterLink();
+    var loginBox = getLoginBox();
+    var button = getLogoutButton();
+    var button2 = getLoginButton();
+    viewLink.style.display = 'block';
+    editLink.style.display = 'block';
+    regLink.style.display = 'none';
+    loginBox.style.display = 'none';
+    button.style.display = 'block';
+    button2.style.display = 'none';
 }
 
 function showLoginOptions() {
-  console.log("Showing login options");
-  var viewLink = getViewProfileLink();
-  var editLink = getEditProfileLink();
-  var regLink = getRegisterLink();
-  var loginBox = getLoginBox();
-  var button = getLogoutButton();
-  var button2 = getLoginButton();
-  viewLink.style.display = 'none';
-  editLink.style.display = 'none';
-  regLink.style.display = 'block';
-  loginBox.style.display = 'block';
-  button.style.display = 'none';
-  button2.style.display = 'block';
+    console.log("Showing login options");
+    var viewLink = getViewProfileLink();
+    var editLink = getEditProfileLink();
+    var regLink = getRegisterLink();
+    var loginBox = getLoginBox();
+    var button = getLogoutButton();
+    var button2 = getLoginButton();
+    viewLink.style.display = 'none';
+    editLink.style.display = 'none';
+    regLink.style.display = 'block';
+    loginBox.style.display = 'block';
+    button.style.display = 'none';
+    button2.style.display = 'block';
 }
 
 function checkForSession() {
-  console.log("Check for Session Function");
-  $.ajax({
-    url: "php/sessionCheck.php",
-    type: "GET",
-    success: function(result) {
-      console.log("Second ajax function");
-      console.log("result is", result);
-      if (result == "true") {
-        hideLoginOptions();
-      }
-      else {
-        showLoginOptions();
+    console.log("Check for Session Function");
+    $.ajax({
+        url: "php/sessionCheck.php",
+        type: "GET",
+        success: function(result) {
+            console.log("Second ajax function");
+            console.log("result is", result);
 
-      }
-    }
-  })
+            //Login options via JS have been deprecated
+            /*if (result == "true") {
+              hideLoginOptions();
+            }
+            else {
+              showLoginOptions();
+            }*/
+
+        }
+    })
 }
 
 function createSubmitButtonEvent() {

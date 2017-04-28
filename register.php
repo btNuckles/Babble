@@ -31,7 +31,7 @@
             <button id="sub-button" class="btn btn-primary" data-button="reg-submit" type="button" name="reg-button">Submit</button>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
     <script src="scripts/register.js" charset="utf-8"></script>
 </body>
 

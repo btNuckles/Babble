@@ -1,13 +1,11 @@
-<?php 
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+<?php
 if(isset($_SESSION['userlogin'])){
   $logged_in = TRUE;
 }else{
   $logged_in = FALSE;
 }
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-fixed-top">
   <div id="nav-container mr-auto" class="container-fluid">
@@ -18,10 +16,11 @@ if(isset($_SESSION['userlogin'])){
       <?php
       #If the user is logged in, echo profile options and logout button
       #Else, echo login and registration options
-      if($logged_in){
+      if($logged_in == TRUE){
         echo '<li class="nav-item"><a class="nav-item nav-link" id="view-profile" href="viewprofile.php">View Profile</a></li>';
         echo '<li class="nav-item"><a class="nav-item nav-link" id="edit-profile" href="editprofile.php">Edit Profile</a></li>';
         echo '<li class="nav-item pull-right"><button class="btn btn-primary my-2 my-sm-0" id="logout-button" data-button="logout" type="button" name="button">Logout</button></li>';
+        echo '<script src="scripts/index.js" charset="utf-8"></script>';
       }else {
         echo '<li class="nav-item"><a class="nav-item nav-link" id="register-link" href="register.php">Register</a></li>';
         echo '<li class="nav-item pull-right"><button class="btn btn-primary my-2 my-sm-0" id="login-button" data-button="submit" type="button" name="button">Login</button></li>';
@@ -30,6 +29,7 @@ if(isset($_SESSION['userlogin'])){
           #<!--<div id="login-box" class="form-inline">-->
         echo   '<input class="form-control" id="username" type="text" name="username" placeholder="Username">';
         echo   '<input class="form-control" id="password" type="password" name="password" placeholder="Password"></div></li>';
+        echo '<script src="scripts/index.js" charset="utf-8"></script>';
       }
       ?>
 

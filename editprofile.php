@@ -30,10 +30,10 @@ if(!isset($_SESSION['userlogin'])){
             </div>
     <!-- END EDIT USER PROFILE FORM -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
     <script src="scripts/editprofile.js" charset="utf-8"></script>
 
-    <script src="scripts/index.js" charset="utf-8"></script>
+    
 
     <?php if(isset($_SESSION['userlogin'])) {
         echo "<script> checkForSession(); </script>";

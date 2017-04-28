@@ -107,8 +107,8 @@ function checkForSession() {
     })
 }
 
-function createSubmitButtonEvent() {
-    var button = getSubmitButton();
+function createLoginButtonEvent() {
+    var button = getLoginButton();
     button.addEventListener('click', function() {
         consoleLog("Submit was Clicked");
     });
@@ -166,6 +166,9 @@ function createLogoutButtonEvent() {
     })
 };
 
-createSubmitButtonEvent();
-createLogoutButtonEvent();
+if (getLoginButton() != null) {
+    createLoginButtonEvent();
+} else if (getLogoutButton() != null) {
+    createLogoutButtonEvent();
+}
 consoleLog('Event created');

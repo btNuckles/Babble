@@ -41,8 +41,8 @@
     </script>
     <!-- SCRIPT TO LOAD LATEST TOPICS -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="scripts/index.js" charset="utf-8"></script>
+    
+    
 </body>
 
 <?php if(isset($_SESSION['userlogin'])) {

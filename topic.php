@@ -65,12 +65,12 @@ $_SESSION["t_id"] = $_GET["id"];
     </center>
     <!-- END DISPLAY RECENT POSTS -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
     <?php if (isset($_SESSION['userlogin'])) { ?>
         <script src="scripts/topic.js" charset="utf-8"></script>
     <?php } ?>
 
-    <script src="scripts/index.js" charset="utf-8"></script>
+    
     <?php if(isset($_SESSION['userlogin'])) {
         echo "<script> checkForSession(); </script>";
      } ?>

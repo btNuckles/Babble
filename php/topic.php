@@ -36,7 +36,7 @@ while($row = mysqli_fetch_array($result))
       .'<span>' . '<br>' . '<span class="Time">Time Posted: '  . date('H:i:s a', strtotime($row['time_created'])) . '</span>';
     echo '<p>'. $row['content'] . '</p>';
     // Check if user is logged in and if so, check their ID
-    if (isset($_SESSION['userlogin']) && $id == GetAuthorSession($conn)['id']) {
+    if (isset($_SESSION['userlogin']) && ($id == GetAuthorSession($conn)['id'] || $_SESSION['is_admin'] == true)) {
         // If true, Edit and Delete is shown
         // echo '<td class="rightpart">';
         echo '<span><a href="editpost.php?postid=' . $row['id'] . '">' . "Edit" . '</a><span>';

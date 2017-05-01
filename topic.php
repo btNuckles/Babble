@@ -1,5 +1,6 @@
 <?php session_start();
 $_SESSION["t_id"] = $_GET["id"];
+$media_link = include 'php/media.php';
 ?>
 <!DOCTYPE html>
 
@@ -30,7 +31,7 @@ $_SESSION["t_id"] = $_GET["id"];
                 xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
 
-            xmlhttp.onreadystatechange = function() { 
+            xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("post-table").innerHTML = this.responseText;
                 }
@@ -44,6 +45,9 @@ $_SESSION["t_id"] = $_GET["id"];
             reloading();
         }, 1000);
     </script>
+
+    <blockquote class="embedly-card"><h4><a href=<?php include('php/media.php');?>></a></h4></blockquote>
+    <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
     <!-- END SCRIPT TO LOAD LATEST POSTS -->
 
     <!-- DISPLAY RECENT POSTS -->
@@ -51,7 +55,7 @@ $_SESSION["t_id"] = $_GET["id"];
       <div id="loaddiv" class="container" style="padding-top:70px" overflow:auto>
         <?php if (isset($_SESSION['userlogin'])) { ?>
             <!-- FORM FOR NEW POST -->
-                <div id="reply-box" class="container" style="padding-top:70px">
+                <div id="reply-box" class="container">
                     <label for="comment-box">Comment</label>
                     <b class="input-boxes"><textarea input id="comment-box" class="form-control" type="text" name="content"></textarea></b>
                     <p></p>

@@ -36,6 +36,10 @@ center {
   margin-bottom: 20px;
 }
 
+#post-table {
+  color: black;
+}
+
 #nav-container {
   background-color: navy;
   color: white;

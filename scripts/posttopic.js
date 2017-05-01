@@ -1,6 +1,7 @@
 var NEW_POST_SUBMIT_BUTTON_SELECTOR = '[data-button="post-submit"]';
-var TITLE_SELECTOR = 'title';
-var CONTENT_SELECTOR = 'content';
+var TITLE_SELECTOR = 'post-title';
+var CONTENT_SELECTOR = 'post-content';
+var MEDIA_SELECTOR = 'post-media';
 
 function consoleLog(someMessage)
 { console.log(someMessage); }
@@ -20,19 +21,22 @@ function createButtonEvent()
     });
     $(button).click(function() {
         consoleLog("Right before AJAX");
-        var title = document.getElementById("post-title").value;
-        var content = document.getElementById("post-content").value;
-        
+        var title = document.getElementById(TITLE_SELECTOR).value;
+        var content = document.getElementById(CONTENT_SELECTOR).value;
+        var media = document.getElementById(MEDIA_SELECTOR).value;
+
         if ((title.length > 0 && title.length <= 64) && content.length >= 1) {
             consoleLog("New Thread Created");
             consoleLog(title);
             consoleLog(content);
+            consoleLog(media);
             $.ajax({
                 url: "php/posttopic.php",
                 type: "POST",
                 data: {
                     titleEntered: title,
-                    contentEntered: content
+                    contentEntered: content,
+                    mediaLink: media
                 },
                 success: function(result) {
                   consoleLog("Inside success function.");

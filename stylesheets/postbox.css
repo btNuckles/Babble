@@ -1,5 +1,5 @@
 .post-container {
-  background: black;
+  color: black;
   background-color: white;
 }
 
@@ -12,4 +12,12 @@
 h1 {
   -ms-align-items: center;
   align-items: center;
+}
+
+#commment-box {
+  width:85%;
+}
+
+#reply-box {
+  width: 100%;
 }

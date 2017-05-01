@@ -49,6 +49,7 @@ while($row = mysqli_fetch_array($result))
     echo '</div>';
     //echo '</td>';
     echo '</tr>';
+    echo '<br>';
 }
 
 //Creates a more organized div to insert into the table

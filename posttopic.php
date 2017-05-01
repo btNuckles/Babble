@@ -22,23 +22,27 @@ if(!isset($_SESSION['userlogin'])){
     <!-- FORM FOR NEW THREAD -->
     <div class="center-div">
         <div id="loaddiv" class="container" style="padding-top:70px" overflow: auto>
-    <div id="post-box" class="container" style="padding-top:70px">
-        <h1>Create New Topic</h1>
-        <label for="post-title">Title</label>
-        <b class="input-boxes"><input id="post-title" class="form-control" type="text" name="title"></b>
-        <p></p>
-        <label for="post-content">Content</label>
-        <b class="input-boxes"><textarea input id="post-content" class="form-control" type="text" name="content"></textarea></b>
-        <p></p>
-        <button id="post-button" data-button="post-submit" type="button" name="post-button">Create Topic</button>
+          <div id="post-box" class="container" style="padding-top:70px">
+            <h1>Create New Topic</h1>
+            <label for="post-title">Title</label>
+            <b class="input-boxes"><input id="post-title" class="form-control" type="text" name="title"></b>
+            <br>
+            <label for="post-content">Content</label>
+            <b class="input-boxes"><textarea input id="post-content" class="form-control" type="text" name="content"></textarea></b>
+            <br>
+            <label for="media-link">Link</label>
+            <b class="input boxes"><input id="post-media" class="form-control" type="text" name="media"></b>
+            <br>
+            <button id="post-button" data-button="post-submit" type="button" class="btn btn-primary">Create Topic</button>
+            <br>
+            <br>
+          </div>
+        </div>
     </div>
-  </div>
-</div>
     <!-- END FORM FOR NEW THREAD -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="scripts/posttopic.js" charset="utf-8"></script>
-
     <script src="scripts/index.js" charset="utf-8"></script>
 
     <?php if(isset($_SESSION['userlogin'])) {

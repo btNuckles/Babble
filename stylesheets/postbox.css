@@ -1,0 +1,23 @@
+.post-container {
+  color: black;
+  background-color: white;
+}
+
+.center-div {
+  width: 100%;
+  -ms-align-items: center;
+  align-content: center;
+}
+
+h1 {
+  -ms-align-items: center;
+  align-items: center;
+}
+
+#commment-box {
+  width:85%;
+}
+
+#reply-box {
+  width: 100%;
+}

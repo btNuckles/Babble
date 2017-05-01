@@ -17,12 +17,13 @@ mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
 // ======= THREAD TABLE ==========
 // $board_id = ""; <-- no longer need board table
 $title = $_POST['titleEntered'];
+$media = $_POST['mediaLink'];
 $author_id = GetAuthorSession($conn)['id'];
 // $locked = ""; <-- default is 0
 $time = date('Y/m/d H:i:s');
 // ======= THREAD TABLE ==========
 
-$sql = "INSERT INTO threads"."(board_id, title, author_id, time_created, locked)"."VALUES(0, '$title', '$author_id', '$time', 0)";
+$sql = "INSERT INTO threads"."(board_id, title, author_id, time_created, locked, media)"."VALUES(0, '$title', '$author_id', '$time', 0, '$media')";
 $insert= mysqli_query($conn, $sql);
 
 
@@ -34,7 +35,7 @@ $content = $_POST['contentEntered'];
 // $dislikes = ""; <-- default is 0
 // ======= POST TABLE ==========
 
-$sql = "INSERT INTO posts"."(thread_id, author_id, time_created, content, likes, dislikes)"."VALUES('$thread_id', '$author_id', '$time', '$content', 0, 0)";
+$sql = "INSERT INTO posts"."(thread_id, author_id, time_created, content, likes, dislikes, media)"."VALUES('$thread_id', '$author_id', '$time', '$content', 0, 0, '$media')";
 $insert= mysqli_query($conn, $sql);
 
 

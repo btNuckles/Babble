@@ -1,5 +1,6 @@
 <?php session_start();
 $_SESSION["t_id"] = $_GET["id"];
+$media_link = include 'php/media.php';
 ?>
 <!DOCTYPE html>
 
@@ -11,6 +12,8 @@ $_SESSION["t_id"] = $_GET["id"];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/indexstyles.css">
+    <link rel="stylesheet" href="stylesheets/colors.css">
+    <link rel-"stylesheet" href="stylesheets/postbox.css">
 </head>
 
 <body>
@@ -42,27 +45,27 @@ $_SESSION["t_id"] = $_GET["id"];
             reloading();
         }, 1000);
     </script>
+
+    <blockquote class="embedly-card"><h4><a href=<?php include('php/media.php');?>></a></h4></blockquote>
+    <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
     <!-- END SCRIPT TO LOAD LATEST POSTS -->
 
-    <?php if (isset($_SESSION['userlogin'])) { ?>
-        <!-- FORM FOR NEW POST -->
-        <center>
-            <div id="reply-box" class="container" style="padding-top:70px">
-                <label for="comment-box">Comment</label>
-                <b class="input-boxes"><textarea input id="comment-box" class="form-control" type="text" name="content"></textarea></b>
-                <p></p>
-                <button id="reply-button" data-button="reply-submit" type="btn btn-primary" name="reply-button">Reply</button>
-            </div>
-        </center>
-        <!-- END FORM FOR NEW POST -->
-    <?php } ?>
-
     <!-- DISPLAY RECENT POSTS -->
-    <center>
-      <div id="loaddiv" class="container" style="padding-top:70px">
+    <div class="center-div">
+      <div id="loaddiv" class="container" style="padding-top:70px" overflow:auto>
+        <?php if (isset($_SESSION['userlogin'])) { ?>
+            <!-- FORM FOR NEW POST -->
+                <div id="reply-box" class="container">
+                    <label for="comment-box">Comment</label>
+                    <b class="input-boxes"><textarea input id="comment-box" class="form-control" type="text" name="content"></textarea></b>
+                    <p></p>
+                    <button id="reply-button" data-button="reply-submit" class="btn btn-primary" name="reply-button">Reply</button>
+                </div>
+            <!-- END FORM FOR NEW POST -->
+        <?php } ?>
           <table id="post-table" class="table table-hover"></table>
       </div>
-    </center>
+    </div>
     <!-- END DISPLAY RECENT POSTS -->
 
     
@@ -74,6 +77,7 @@ $_SESSION["t_id"] = $_GET["id"];
     <?php if(isset($_SESSION['userlogin'])) {
         echo "<script> checkForSession(); </script>";
      } ?>
+
 
 </body>
 

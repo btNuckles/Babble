@@ -1,0 +1,46 @@
+html, body {
+  background-color: orange;
+  color: white;
+  height: 100%;
+}
+
+center {
+  height: 100%;
+}
+
+.nav {
+  background-color: navy;
+  color: white;
+}
+
+.navbar-brand {
+  background-color: navy;
+  color: white;
+}
+
+.navbar {
+  background-color: navy;
+  color: white;
+}
+
+.nav-link {
+  background-color: navy;
+  color: white;
+}
+
+#loaddiv {
+  background-color: white;
+  color: black;
+  width:85%;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#post-table {
+  color: black;
+}
+
+#nav-container {
+  background-color: navy;
+  color: white;
+}

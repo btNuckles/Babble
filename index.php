@@ -8,7 +8,9 @@
     <title>Babble</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="stylesheets/indexstyles.css">
+    <link rel="stylesheet" href="stylesheets/indexstyles.css" type="text/css">
+    <link rel-"stylesheet" href="stylesheets/postbox.css" type="text/css">
+    <link rel="stylesheet" href="stylesheets/colors.css" type="text/css">
 </head>
 
 <body>
@@ -41,33 +43,28 @@
     </script>
     <!-- SCRIPT TO LOAD LATEST TOPICS -->
 
-    
-    
+
+    <div class="center-div">
+        <div id="loaddiv" class="container" style="padding-top:70px" overflow: auto>
+          <!-- CREATE NEW TOPIC -->
+          <a href="posttopic.php">
+              <?php if (isset($_SESSION['userlogin'])) { ?>
+              <input type="button" id="new-topic" value="Create New Topic" class="btn btn-primary" />
+              <?php } ?>
+          </a>
+          <!-- DISPLAY RECENT TOPICS -->
+          <h1>Recent Topics</h1>
+            <table id="post-table" class="table table-hover"></table>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="scripts/index.js" charset="utf-8"></script>
+
 </body>
 
 <?php if(isset($_SESSION['userlogin'])) {
     echo "<script> checkForSession(); </script>";
  } ?>
-
-<!-- CREATE NEW TOPIC -->
-<center class="container"  style="padding-top:70px">
-    <a href="posttopic.php">
-        <?php if (isset($_SESSION['userlogin'])) { ?>
-        <input type="button" id="new-topic" value="Create New Topic" class="btn btn-primary" />
-        <?php } ?>
-    </a>
-    <p></p>
-    <!-- CREATE NEW TOPIC -->
-
-
-    <!-- DISPLAY RECENT TOPICS -->
-
-    <h1>Recent Topics</h1>
-    <div id="loaddiv" class="container">
-        <table id="post-table" class="table table-hover"></table>
-    </div>
-</center>
-<!-- DISPLAY RECENT TOPICS -->
-
 
 </html>

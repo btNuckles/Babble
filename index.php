@@ -43,6 +43,7 @@
     </script>
     <!-- SCRIPT TO LOAD LATEST TOPICS -->
 
+
     <div class="center-div">
         <div id="loaddiv" class="container" style="padding-top:70px" overflow: auto>
           <!-- CREATE NEW TOPIC -->
@@ -59,6 +60,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="scripts/index.js" charset="utf-8"></script>
+
 </body>
 
 <?php if(isset($_SESSION['userlogin'])) {

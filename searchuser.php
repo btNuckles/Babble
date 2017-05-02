@@ -21,23 +21,24 @@ if(!isset($_SESSION['userlogin'])){
 
 <body>
     <?php include_once('header.php'); ?>
-    <!-- EDIT USER PROFILE FORM -->
+    <!-- SEARCH USER PROFILE FORM -->
     <div class="center-div">
-      <div id="loaddiv" class="container" style="padding-top:70px" overflow: auto>
-          <div id="edit-box" class="container" style="padding-top:70px">
-              <h1>Edit Your Profile</h1>
-                <label id="new-username-label" for="edit-username">New Display Name</label>
-                <b class="input-boxes"><input class="form-control" id="newusername" type="text" name="newusername"></b><p></p>
-                <label id="bio-label" for="bio">Bio</label>
-                <b class="input-boxes"><textarea input class="form-control" id="bio" type="text" name="bio"></textarea></b><p></p>
-                <button id="sub-button" class="btn btn-primary" data-button="edit-submit" type="button" name="edit-button">Save Changes</button>
+      <div id="loaddiv" class="container" style="padding-top:70px;" overflow: auto>
+          <div id="search-box" class="container" style="padding-top:70px">
+
+                <h1>Search Users</h1>
+                <b class="input-boxes"><input class="form-control" id="searchusername" placeholder="Username" type="text" name="searchusername" style="display:block;float:left;height:32px;width:300px"></b>
+                <button id="sub-button" class="btn btn-primary" data-button="search-submit" type="button" name="search-button" style="display:block;float:left;height:32px;width:75px;margin: 0px 0px -2px">Search</button>
+                <br><hr>
+                <div class="the-return"></div>
             </div>
           </div>
+
     </div>
-    <!-- END EDIT USER PROFILE FORM -->
+    <!-- END SEARCH USER PROFILE FORM -->
+    <div class="the-true-return"></div><br>
 
-
-    <script src="scripts/editprofile.js" charset="utf-8"></script>
+    <script src="scripts/searchuser.js" charset="utf-8"></script>
 
 
 

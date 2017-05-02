@@ -19,6 +19,7 @@ if(isset($_SESSION['userlogin'])){
       if($logged_in == TRUE){
         echo '<li class="nav-item not-login"><a class="nav-item nav-link" id="view-profile" href="viewprofile.php"></a></li>';
         echo '<li class="nav-item not-login"><a class="nav-item nav-link" id="edit-profile" href="editprofile.php"></a></li>';
+        echo '<li class="nav-item not-login"><a class="nav-item nav-link" id="search-user" href="searchuser.php"></a></li>';
         echo '<li class="nav-item pull-right"><button class="btn btn-primary my-2 my-sm-0" id="logout-button" data-button="logout" type="button" name="button">Logout</button></li>';
         echo '<script src="scripts/index.js" charset="utf-8"></script>';
       }else {

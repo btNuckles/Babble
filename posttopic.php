@@ -14,6 +14,7 @@ if(!isset($_SESSION['userlogin'])){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/indexstyles.css">
     <link rel="stylesheet" href="stylesheets/colors.css">
+    <link rel="stylesheet" href="stylesheets/icons.css" type="text/css">
 </head>
 
 <body>
@@ -41,7 +42,7 @@ if(!isset($_SESSION['userlogin'])){
     </div>
     <!-- END FORM FOR NEW THREAD -->
 
-    
+
     <script src="scripts/posttopic.js" charset="utf-8"></script>
     <script src="scripts/index.js" charset="utf-8"></script>
 

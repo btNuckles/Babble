@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="stylesheets/indexstyles.css" type="text/css">
     <link rel-"stylesheet" href="stylesheets/postbox.css" type="text/css">
     <link rel="stylesheet" href="stylesheets/colors.css" type="text/css">
+    <link rel="stylesheet" href="stylesheets/icons.css" type="text/css">
 </head>
 
 <body>

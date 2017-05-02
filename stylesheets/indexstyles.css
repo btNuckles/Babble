@@ -33,9 +33,14 @@
     align-self: flex-end;
 }
 
+#nav-list > .not-login {
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
+}
+
 #nav-list {
     display: inline-flex;
-    flex: 1 1 auto;
     width: 90%;
     margin-left: 15px;
 }

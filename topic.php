@@ -14,6 +14,7 @@ $media_link = include 'php/media.php';
     <link rel="stylesheet" href="stylesheets/indexstyles.css">
     <link rel="stylesheet" href="stylesheets/colors.css">
     <link rel-"stylesheet" href="stylesheets/postbox.css">
+    <link rel="stylesheet" href="stylesheets/icons.css" type="text/css">
 </head>
 
 <body>
@@ -68,12 +69,12 @@ $media_link = include 'php/media.php';
     </div>
     <!-- END DISPLAY RECENT POSTS -->
 
-    
+
     <?php if (isset($_SESSION['userlogin'])) { ?>
         <script src="scripts/topic.js" charset="utf-8"></script>
     <?php } ?>
 
-    
+
     <?php if(isset($_SESSION['userlogin'])) {
         echo "<script> checkForSession(); </script>";
      } ?>

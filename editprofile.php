@@ -16,6 +16,7 @@ if(!isset($_SESSION['userlogin'])){
     <link rel="stylesheet" href="stylesheets/indexstyles.css">
     <link rel="stylesheet" href="stylesheets/colors.css">
     <link rel="stylesheet" href="stylesheets/postbox.cs">
+    <link rel="stylesheet" href="stylesheets/icons.css" type="text/css">
 </head>
 
 <body>
@@ -35,10 +36,10 @@ if(!isset($_SESSION['userlogin'])){
     </div>
     <!-- END EDIT USER PROFILE FORM -->
 
-    
+
     <script src="scripts/editprofile.js" charset="utf-8"></script>
 
-    
+
 
     <?php if(isset($_SESSION['userlogin'])) {
         echo "<script> checkForSession(); </script>";

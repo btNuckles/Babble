@@ -33,7 +33,7 @@ while($userrow = mysqli_fetch_array($userresult))
     #}
     echo '<div class="container-fluid" style="padding-top:70px">';
         echo '<div class="row content">';
-            echo '<div class="col-sm-4 col-lg-3 col-xs-12 sidenav" style="position:fixed">';
+            echo '<div class="col-sm-3 col-lg-3 col-xs-12 sidenav">';
                 echo '<img src="http://i.imgur.com/K93qbBF.png" alt="Avatar" style="width:250px;height:250px;">';
                 echo '<p style="border:3px; border-style:solid; border-color:#000000; padding: 1em; background-color:#D3D3D3; font-size:130%;">' . $userrow['username'] . '</p>';
                 #echo '<h4>' . $userrow['username'] . '\'s Profile</h4>';
@@ -77,7 +77,7 @@ while($userrow = mysqli_fetch_array($userresult))
 
             echo '</div>';
 
-            echo '<div class="col-sm-8 col-sm-offset-4 col-lg-9 col-lg-offset-3 col-xs-12" style="position:relative">';
+            echo '<div class="col-sm-7 col-lg-8 col-xs-12">';
                 echo '<h4 id="home"><small>RECENT POSTS</small></h4>';
                 echo '<hr>';
 

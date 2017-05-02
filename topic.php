@@ -1,5 +1,7 @@
 <?php session_start();
 $_SESSION["t_id"] = $_GET["id"];
+$_SESSION["lock"] = false;
+include "php/lockthread.php";
 $media_link = include 'php/media.php';
 ?>
 <!DOCTYPE html>
@@ -54,7 +56,7 @@ $media_link = include 'php/media.php';
     <!-- DISPLAY RECENT POSTS -->
     <div class="center-div">
       <div id="loaddiv" class="container" style="padding-top:70px" overflow:auto>
-        <?php if (isset($_SESSION['userlogin'])) { ?>
+        <?php if ((isset($_SESSION['userlogin'])) && (!$_SESSION['lock'])) { ?>
             <!-- FORM FOR NEW POST -->
                 <div id="reply-box" class="container">
                     <label for="comment-box">Comment</label>
@@ -63,7 +65,9 @@ $media_link = include 'php/media.php';
                     <button id="reply-button" data-button="reply-submit" class="btn btn-primary" name="reply-button">Reply</button>
                 </div>
             <!-- END FORM FOR NEW POST -->
-        <?php } ?>
+        <?php } else if ($_SESSION['lock']){ ?>
+            <h3>This thread has been locked.</h3>
+        <?php } else ?>
           <table id="post-table" class="table table-hover"></table>
       </div>
     </div>

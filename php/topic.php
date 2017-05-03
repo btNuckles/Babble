@@ -20,6 +20,7 @@ $thread = mysqli_fetch_array($result);
 // Grabbing posts from 'posts' table
 $sql = "SELECT * FROM posts WHERE thread_id = '$thread_id' ORDER BY id DESC LIMIT 10";
 $result = mysqli_query($conn, $sql);
+  echo '<iframe style="display:none;" name="target"></iframe>';
 while($row = mysqli_fetch_array($result))
 {
     $id = $row['author_id'];
@@ -30,9 +31,18 @@ while($row = mysqli_fetch_array($result))
     echo '<tr>';
     //echo '</td>';
     echo '<div class="post-container">';
-    echo '<span class="poster">' . $author_row['username'] . '</span>'. '<br>'. '<span class="like-counter">Likes: '
+    echo '<span class="poster">' . $author_row['username'] . '</span>'. '<br>';
+	if (isset($_SESSION['userlogin'])) {
+	  echo '<span class="like-counter"><a href="php/likepost.php?postid=' . $row['id'] . '" target="target">' . "Likes" . '</a>: '
+      . $row['likes']. '</span>' . '<br>' 
+	  . '<span class="dislike-counter"><a href="php/dislikepost.php?postid=' . $row['id'] . '" target="target">' . "Dislikes" . '</a>: ' 
+	  . $row['dislikes'] . '</span>'. '<br>';
+	} else {
+	  echo '<span class="like-counter">Likes: '
       . $row['likes']. '</span>' . '<br>' . '<span class="dislike-counter">Dislikes: ' . $row['dislikes']
-      . '</span>'. '<br>' . '<span class="Date">Date Posted: '  . date('M d, Y', strtotime($row['time_created']))
+      . '</span>'. '<br>';
+	}
+	  echo '<span class="Date">Date Posted: '  . date('M d, Y', strtotime($row['time_created']))
       .'<span>' . '<br>' . '<span class="Time">Time Posted: '  . date('H:i:s a', strtotime($row['time_created'])) . '</span>';
     echo '<p>'. $row['content'] . '</p>';
     // Check if user is logged in and if so, check their ID

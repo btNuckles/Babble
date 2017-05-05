@@ -61,3 +61,22 @@
     display: inline-block;
     width: 90%;
 }
+
+/* Index Styles
+Used in index.php */
+.topicrow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    border-top:1px grey solid;
+    padding-left:1%;
+}
+
+.topiccell {
+    align-self:center;
+    min-width:90px;
+}
+
+/* Post Styles 
+Used in topic.php */

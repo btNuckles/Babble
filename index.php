@@ -55,7 +55,7 @@
           </a>
           <!-- DISPLAY RECENT TOPICS -->
           <h1>Recent Topics</h1>
-            <table id="post-table" class="table table-hover"></table>
+            <div id="post-table" class="table table-hover"></div>
         </div>
     </div>
 

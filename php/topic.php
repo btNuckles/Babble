@@ -32,9 +32,9 @@ while($row = mysqli_fetch_array($result))
     echo '<div class="post-container">';
     echo '<span class="poster">' . $author_row['username'] . '</span>'. '<br>';
 	if (isset($_SESSION['userlogin'])) {
-	  echo '<span><button data-button="like-button" onclick=likeFunction(this)>Like</button>'
+	  echo '<span class="dislike-counter"><button data-button="like-button" onclick=likeFunction(event)>Like</button>'
       . ' ' . $row['likes']. '</span>' . '<br>'
-	  . '<span><button data-button="dislike-button" onclick=dislikeFunction(this)>Dislike</button>'
+	  . '<span class="dislike-counter"><button data-button="dislike-button" onclick=dislikeFunction(event)>Dislike</button>'
 	  . ' ' . $row['dislikes'] . '</span>'. '<br>';
 	} else {
 	  echo '<span class="like-counter">Likes: '
@@ -42,7 +42,7 @@ while($row = mysqli_fetch_array($result))
       . '</span>'. '<br>';
 	}
 	  echo '<span class="Date">Date Posted: '  . date('M d, Y', strtotime($row['time_created']))
-      .'<span>' . '<br>' . '<span class="Time">Time Posted: '  . date('H:i:s a', strtotime($row['time_created'])) . '</span>';
+      .'</span>' . '<br>' . '<span class="Time">Time Posted: '  . date('H:i:s a', strtotime($row['time_created'])) . '</span>';
     echo '<p>'. $row['content'] . '</p>';
     echo '<span class="Hidden" style=display:none>' . $row['id'] . '</span>';
 

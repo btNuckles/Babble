@@ -12,13 +12,7 @@ if ($conn == false) {
 }
 
 mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
-$id = $_GET["postid"];
+$id = $_POST["post_id"];
 $sql = "UPDATE posts SET likes = likes + 1 WHERE id = $id";
 $insert= mysqli_query($conn, $sql);
-
-if (session_status())
-{ echo "Session is running"; }
-else
-{ echo "No session started"; }
-
 ?>

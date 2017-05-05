@@ -1,5 +1,5 @@
 html, body {
-  background-color: orange;
+  background-color: #E17000;
   color: white;
   height: 100%;
 }
@@ -9,22 +9,22 @@ center {
 }
 
 .nav {
-  background-color: navy;
-  color: white;
+  background-color: #002B54;
+  color: #FFFFFF;
 }
 
 .navbar-brand {
-  background-color: navy;
+  background-color: #002B54;
   color: white;
 }
 
 .navbar {
-  background-color: navy;
+  background-color: #002B54;
   color: white;
 }
 
 .nav-link {
-  background-color: navy;
+  background-color: #002B54;
   color: white;
 }
 
@@ -41,6 +41,6 @@ center {
 }
 
 #nav-container {
-  background-color: navy;
+  background-color: #002B54;
   color: white;
 }

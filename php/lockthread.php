@@ -17,18 +17,13 @@ $result = mysqli_query($conn, $sql);
 $thread = mysqli_fetch_array($result);
 
 // check the age of the thread
-$time = new DateTime(); 
+$time = new DateTime();
 $age = new DateTime($thread['time_created']);
 $diff = date_diff($age, $time);
 if ($diff->format('%d') >= 10) {
     $sql = "UPDATE threads SET locked = 1 WHERE id = '$thread_id'";
     $insert= mysqli_query($conn, $sql);
     $_SESSION['lock'] = true;
+    echo 'Thread locking loop';
 }
-
-if (session_status())
-{ echo "Session is running"; }
-else
-{ echo "No session started"; }
-
 ?>

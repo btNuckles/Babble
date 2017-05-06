@@ -46,7 +46,7 @@
 
 
     <div class="center-div">
-        <div id="loaddiv" class="container" style="padding-top:70px" overflow: auto>
+        <div id="loaddiv" class="container" style="padding-top:25px" overflow: auto>
           <!-- CREATE NEW TOPIC -->
           <a href="posttopic.php">
               <?php if (isset($_SESSION['userlogin'])) { ?>

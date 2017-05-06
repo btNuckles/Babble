@@ -26,41 +26,50 @@ while($row = mysqli_fetch_array($result))
     $author_sql = "SELECT * FROM users WHERE id = $id LIMIT 1";
     $author_result = mysqli_query($conn, $author_sql);
     $author_row = mysqli_fetch_array($author_result);
+    $loggedin = isset($_SESSION['userlogin']);
+    $author_name = $author_row['username'];
+    $post_id = $row['id'];
+    $likes = $row['likes'];
+    $dislikes = $row['dislikes'];
+    $score = $likes - $dislikes;
+    $date = date('M d, Y', strtotime($row['time_created']));
+    $time = date('H:i:s a', strtotime($row['time_created']));
+    $content = $row['content'];
 
-    echo '<tr>';
-    //echo '</td>';
+    //Start Post
     echo '<div class="post-container">';
-    echo '<span class="poster">' . $author_row['username'] . '</span>'. '<br>';
-	if (isset($_SESSION['userlogin'])) {
-	  echo '<span class="dislike-counter"><button data-button="like-button" onclick=likeFunction(event)>Like</button>'
-      . ' ' . $row['likes']. '</span>' . '<br>'
-	  . '<span class="dislike-counter"><button data-button="dislike-button" onclick=dislikeFunction(event)>Dislike</button>'
-	  . ' ' . $row['dislikes'] . '</span>'. '<br>';
+
+    //Begin Poster-Info
+    echo '<div class="poster-info">';
+    echo '<span class="poster">' . $author_name . '</span>';
+    echo '<div class="post-avatar">' . 'AVATAR HERE' . '</div>';
+	if ($loggedin) {
+    echo '<div class="post-votes"><button data-button="dislike-button" onclick=dislikeFunction(event)>Dislike</button> ';
+    echo $score;
+	  echo ' <button data-button="like-button" onclick=likeFunction(event)>Like</button></div>';
 	} else {
-	  echo '<span class="like-counter">Likes: '
-      . $row['likes']. '</span>' . '<br>' . '<span>Dislikes: ' . $row['dislikes']
-      . '</span>'. '<br>';
+	  echo '<span class="like-counter">Score: ' . $score . '</span>';
 	}
-	  echo '<span class="Date">Date Posted: '  . date('M d, Y', strtotime($row['time_created']))
-      .'</span>' . '<br>' . '<span class="Time">Time Posted: '  . date('H:i:s a', strtotime($row['time_created'])) . '</span>';
-    echo '<p>'. $row['content'] . '</p>';
-    echo '<span class="Hidden" style=display:none>' . $row['id'] . '</span>';
+    echo '</div>';
+    //End Poster-Info
+
+    //Begin Post-Content
+    echo '<div class="post-content">';
+    echo '<div class="post-info">';
+    if ($loggedin && ($id == GetAuthorSession($conn)['id'] || $_SESSION['is_admin'])) {
+      echo '<span class="post-edit"><a href="editpost.php?postid=' . $post_id . '">' . 'Edit' . '</a>' . ' | ' . '</span>';
+    }
+    echo '<span class="post-date">Posted: ' . $date . ' at ' . $time . '</span></div>';
+    echo '<p>' . $content . '</p>';
+    echo '<span class="Hidden" style="display:none">' . $post_id . '</span>';
+    echo '</div>';
+    //End Post-Content
 
     // Check if user is logged in and if so, check their ID
-    if (isset($_SESSION['userlogin']) && ($id == GetAuthorSession($conn)['id'] || $_SESSION['is_admin'] == true)) {
-        // If true, Edit and Delete is shown
-        // echo '<td class="rightpart">';
-        echo '<span><a href="editpost.php?postid=' . $row['id'] . '">' . "Edit" . '</a><span>';
-        //echo '</td>';
-    }
-    //else {  // Else show nothing
-        //echo '<td class="rightpart">';
-        //echo '</td>';
-    //}
+    // If true, or if user is admin, Edit and Delete are shown
+
     echo '</div>';
-    //echo '</td>';
-    echo '</tr>';
-    echo '<br>';
+    //End Post
 }
 
 //Creates a more organized div to insert into the table

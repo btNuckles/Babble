@@ -2,7 +2,7 @@ var NEW_SUBMIT_REPLY_BUTTON_SELECTOR = '[data-button="reply-submit"]';
 var LIKE_BUTTON_SELECTOR = '[data-button="like-button"]';
 var DISLIKE_BUTTON_SELECTOR = '[data-button="dislike-button"]';
 var CONTENT_SELECTOR = 'Comment';
-var ID_SELECTOR = '.Hidden';
+// var ID_SELECTOR = '.Hidden';
 
 function consoleLog(someMessage)
 { console.log(someMessage); }
@@ -61,17 +61,14 @@ function createButtonEvent()
     });
 };
 
-function likeFunction(e) {
+function likeFunction(e, postnum) {
   var button = e.target;
-  var postnum = $(button).parent().siblings(ID_SELECTOR).html();
+  // var postnum = $(button).parent().siblings(ID_SELECTOR).html();
   consoleLog(postnum);
   consoleLog("This is the like function");
   $.ajax({
-    url: "php/likepost.php",
+    url: "php/likepost.php?post_id=" + postnum,
     type: "POST",
-    data: {
-      post_id: postnum
-    },
     success: function(result) {
       consoleLog('likepost.php ran');
       consoleLog(result);
@@ -83,17 +80,14 @@ function likeFunction(e) {
 });
 }
 
-function dislikeFunction(e) {
+function dislikeFunction(e, postnum) {
   var button = e.target;
-  var postnum = $(button).parent().siblings(ID_SELECTOR).html();
+  // var postnum = $(button).parent().siblings(ID_SELECTOR).html();
   consoleLog(postnum);
   consoleLog("this is the dislike function")
   $.ajax({
-    url: "php/dislikepost.php",
+    url: "php/dislikepost.php?post_id=" + postnum,
     type: "POST",
-    data: {
-      post_id: postnum
-    },
     success: function(result) {
       consoleLog('dislikepost.php ran');
       consoleLog(result);

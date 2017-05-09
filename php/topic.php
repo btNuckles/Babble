@@ -44,9 +44,9 @@ while($row = mysqli_fetch_array($result))
     echo '<span class="poster">' . $author_name . '</span>';
     echo '<div class="post-avatar">' . 'AVATAR HERE' . '</div>';
 	if ($loggedin) {
-    echo '<div class="post-votes"><button data-button="dislike-button" onclick=dislikeFunction(event)>Dislike</button> ';
-    echo $score;
-	  echo ' <button data-button="like-button" onclick=likeFunction(event)>Like</button></div>';
+      echo '<div class="post-votes"><button data-button="dislike-button" onclick=dislikeFunction(event,' . $post_id . ')>Dislike</button> ';
+      echo $score;
+	  echo ' <button data-button="like-button" onclick=likeFunction(event,' . $post_id . ')>Like</button></div>';
 	} else {
 	  echo '<span class="like-counter">Score: ' . $score . '</span>';
 	}

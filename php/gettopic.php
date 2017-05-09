@@ -13,7 +13,7 @@ if ($conn == false) {
 
 mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
 
-$sql = "SELECT * FROM threads WHERE board_id = '0' ORDER BY id DESC LIMIT 10";
+$sql = "SELECT * FROM threads WHERE board_id = '0' ORDER BY id DESC LIMIT 20";
 $result = mysqli_query($conn, $sql);
 
 echo '<div class="topicrow">

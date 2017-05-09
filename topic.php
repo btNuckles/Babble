@@ -52,7 +52,7 @@ $_SESSION["lock"] = false;
     <div class="center-div">
       <div id="loaddiv" class="container" overflow:auto>
         <div class="topic-top-flex">
-        <blockquote class="embedly-card"><h4><a href=<?php include('php/media.php');?>></a></h4></blockquote>
+        <blockquote class="embedly-card" width=600px><h4><a href=<?php include('php/media.php');?>></a></h4></blockquote>
         <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
         <?php include_once('php/lockthread.php');
         if ((isset($_SESSION['userlogin'])) && (!$_SESSION['lock'])) { ?>

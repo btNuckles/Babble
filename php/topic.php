@@ -31,7 +31,7 @@ $thread = mysqli_fetch_array($result);
   echo '<h3><center>' . $thread['title'] . '</h3></center>';
   echo '</td>';
 // Grabbing posts from 'posts' table
-$sql = "SELECT * FROM posts WHERE thread_id = '$thread_id' ORDER BY id DESC LIMIT 10";
+$sql = "SELECT * FROM posts WHERE thread_id = '$thread_id' ORDER BY id DESC LIMIT 20";
 $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result))
 {
@@ -53,8 +53,7 @@ while($row = mysqli_fetch_array($result))
 
     //Begin Poster-Info
     echo '<div class="poster-info">';
-    echo '<span class="poster">' . $author_name . '</span>';
-    echo '<div class="post-avatar">' . 'AVATAR HERE' . '</div>';
+    echo '<span class="poster">' . '<img src="images/useravatar.png" alt="Avatar" style="width:20px;height:auto">' .  "  " . $author_name . '</span>';
 	if ($loggedin) {
         $checklikesql = "SELECT COUNT(*) as count FROM voterecord WHERE userid = $uid AND postid = $post_id";
         $checklikeresult = mysqli_query($conn, $checklikesql);

@@ -21,7 +21,8 @@ if(!isset($_SESSION['userlogin'])){
 <body>
     <?php include_once('header.php'); ?>
     <!-- VIEW MESSAGE FORM -->
-
+    <div class="center-div">
+      <div id="loaddiv" class="container" overflow:auto>
           <div id="message-box" class="container" style="padding-top:70px">
               <h1><center>Search Users for Chat History</center></h1>
                 <b class="input-boxes"><input class="form-control" id="recipient-name" type="text" name="recipient-name" Placeholder="User Name"></b>
@@ -40,6 +41,8 @@ if(!isset($_SESSION['userlogin'])){
         <li class="active"><a href="sendmessage.php"><center>Send Message</center></a></li>
     </ul>
     </div>
+    </div>
+      </div>
     </div>
     <br>
 

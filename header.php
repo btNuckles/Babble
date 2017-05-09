@@ -9,7 +9,7 @@ if(isset($_SESSION['userlogin'])){
 
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-fixed-top">
   <div id="nav-container mr-auto" class="container-fluid">
-    <a id="forum-name" class="navbar-brand" href="#">BABBLE</a>
+    <a id="forum-name" class="navbar-brand" href="#"><img src="images/forumicon.png" height=40px width=40px></a>
     <ul id="nav-list" class="nav navbar-nav mr-auto" style="display:inline-block">
       <li class="nav-item not-login"><a class="nav item nav-link" id="home-link" href="index.php"></a></li>
 

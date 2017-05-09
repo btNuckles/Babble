@@ -1,4 +1,8 @@
-
+#forum-name{
+  margin-top: 0px;
+  padding-top: 5px;
+  padding-left: 50px;
+}
 
 #home-link {
   background: url(../images/homeicon.png) no-repeat center;

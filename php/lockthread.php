@@ -24,6 +24,5 @@ if ($diff->format('%d') >= 10) {
     $sql = "UPDATE threads SET locked = 1 WHERE id = '$thread_id'";
     $insert= mysqli_query($conn, $sql);
     $_SESSION['lock'] = true;
-    echo 'Thread locking loop';
 }
 ?>

@@ -20,7 +20,9 @@ $_SESSION["p_id"] = $_GET["postid"];
 </head>
 
 <body>
-    <?php include_once('header.php'); ?>
+    <?php
+    include_once('header.php'); 
+    ?>
 
     <script type="text/javascript">
     var thread_id = <?php echo json_encode($_SESSION["t_id"]); ?>;
@@ -50,10 +52,15 @@ $_SESSION["p_id"] = $_GET["postid"];
     </script>
     <!-- END SCRIPT TO LOAD LATEST POSTS -->
 
-    <!-- FORM FOR EDIT POST -->
-
-    <!-- END FORM FOR EDIT POST -->
-
+    <!-- SCRIPT TO LOAD POST CONTENT -->
+    <script>
+    function post_content() {
+        var edit_post_content = <?php echo json_encode($_SESSION["edit_content"]); ?>;
+        document.getElementById("commentedit-box").innerHTML = edit_post_content;
+    }
+    </script>
+    <!-- END SCRIPT TO LOAD POST CONTENT -->
+    
     <!-- DISPLAY POST -->
     <div class="center-div">
       <div id="loaddiv" class="container" style="padding-top:70px" overflow: auto>
@@ -69,6 +76,7 @@ $_SESSION["p_id"] = $_GET["postid"];
     </div>
     <!-- END DISPLAY POST -->
 
+    <script>post_content();</script>
 
     <script src="scripts/editpost.js" charset="utf-8"></script>
 

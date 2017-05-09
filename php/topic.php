@@ -12,12 +12,16 @@ if ($conn == false) {
 }
 mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
 
+$loggedin = isset($_SESSION['userlogin']);
+
 //Get user id
-$login = $_SESSION['userlogin'];
-$usersql = "SELECT id FROM users WHERE username = '" . $login . "'";
-$userresult = mysqli_query($conn, $usersql);
-while ($userrow = mysqli_fetch_array($userresult)) {
-    $uid = $userrow['id'];
+if ($loggedin) {
+    $login = $_SESSION['userlogin'];
+    $usersql = "SELECT id FROM users WHERE username = '" . $login . "'";
+    $userresult = mysqli_query($conn, $usersql);
+    while ($userrow = mysqli_fetch_array($userresult)) {
+        $uid = $userrow['id'];
+    }
 }
 
 // Grabbing title from 'threads' table
@@ -35,7 +39,6 @@ while($row = mysqli_fetch_array($result))
     $author_sql = "SELECT * FROM users WHERE id = $id LIMIT 1";
     $author_result = mysqli_query($conn, $author_sql);
     $author_row = mysqli_fetch_array($author_result);
-    $loggedin = isset($_SESSION['userlogin']);
     $author_name = $author_row['username'];
     $post_id = $row['id'];
     $likes = $row['likes'];
@@ -100,7 +103,6 @@ while($row = mysqli_fetch_array($result))
     }
     echo '<span class="post-date">Posted: ' . $date . ' at ' . $time . '</span></div>';
     echo '<p>' . $content . '</p>';
-    echo '<span class="Hidden" style="display:none">' . $post_id . '</span>';
     echo '</div>';
     //End Post-Content
 

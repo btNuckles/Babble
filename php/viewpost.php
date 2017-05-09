@@ -31,8 +31,7 @@ echo '<div class="post-container">';
 
 //Begin Poster-Info
 echo '<div class="poster-info">';
-echo '<span class="poster">' . $author_name . '</span>';
-echo '<div class="post-avatar">' . 'AVATAR HERE' . '</div>';
+echo '<span class="poster">' . '<img src="images/useravatar.png" alt="Avatar" style="width:20px;height:auto">' .  "  " . $author_name . '</span>';
 echo '<span class="like-counter">Score: ' . $score . '</span>';
 echo '</div>';
 //End Poster-Info

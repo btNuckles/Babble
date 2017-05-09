@@ -22,6 +22,7 @@ $_SESSION["p_id"] = $_GET["postid"];
 <body>
     <?php
     include_once('header.php'); 
+    include_once('php/editcontent.php');
     ?>
 
     <script type="text/javascript">

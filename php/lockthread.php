@@ -20,7 +20,7 @@ $thread = mysqli_fetch_array($result);
 $time = new DateTime();
 $age = new DateTime($thread['time_created']);
 $diff = date_diff($age, $time);
-if ($diff->format('%d') >= 10) {
+if ($diff->format('%a') >= 10) {
     $sql = "UPDATE threads SET locked = 1 WHERE id = '$thread_id'";
     $insert= mysqli_query($conn, $sql);
     $_SESSION['lock'] = true;

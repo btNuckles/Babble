@@ -39,7 +39,7 @@ while($row = mysqli_fetch_array($result))
     $author_sql = "SELECT * FROM users WHERE id = $id LIMIT 1";
     $author_result = mysqli_query($conn, $author_sql);
     $author_row = mysqli_fetch_array($author_result);
-    $author_name = $author_row['username'];
+    $author_name = $author_row['displayname'];
     $post_id = $row['id'];
     $likes = $row['likes'];
     $dislikes = $row['dislikes'];

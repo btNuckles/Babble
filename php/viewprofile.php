@@ -20,6 +20,19 @@ $login = $_SESSION['userlogin'];
 $usersql = "SELECT * FROM users WHERE username = '" . $login . "'";
 $userresult = mysqli_query($conn, $usersql);
 
+$idsql = "SELECT id FROM users WHERE username = '" . $login . "'";
+$idresult = mysqli_query($conn, $idsql);
+$userid = mysqli_fetch_array($idresult);
+$author_id = $userid['id'];
+
+$likessql = "SELECT * FROM posts WHERE author_id = '$author_id'";
+$likesresult = mysqli_query($conn, $likessql);
+$karma = 0;
+
+while($likes = mysqli_fetch_array($likesresult))
+{
+  $karma = $karma + $likes['likes'] + $likes['dislikes'];
+}
 
 while($userrow = mysqli_fetch_array($userresult))
 {
@@ -53,7 +66,7 @@ while($userrow = mysqli_fetch_array($userresult))
                     echo '</div>';
                     echo '<div class="col-sm-6">';
                         echo '<h4>Karma</h4>';
-                        echo '<p style="border:3px; border-style:solid; border-color:#D3D3D3; padding: 1em;">' . $userrow['karma'] . '</p>';
+                        echo '<p style="border:3px; border-style:solid; border-color:#D3D3D3; padding: 1em;">' . $karma . '</p>';
                     echo '</div>';
                 echo '</div>';
                 echo '<div class="row">';
@@ -132,6 +145,8 @@ while($userrow = mysqli_fetch_array($userresult))
         echo '</div>';
     echo '</div>';
     */
+    #echo $dislikes['dislikes'];
+    #echo $likes['likes'];
 }
 
 mysqli_close($conn);

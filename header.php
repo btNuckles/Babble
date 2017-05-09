@@ -11,15 +11,15 @@ if(isset($_SESSION['userlogin'])){
   <div id="nav-container mr-auto" class="container-fluid">
     <a id="forum-name" class="navbar-brand" href="#"><img src="images/forumicon.png" height=40px width=40px></a>
     <ul id="nav-list" class="nav navbar-nav mr-auto" style="display:inline-block">
-      <li class="nav-item not-login"><a class="nav item nav-link" id="home-link" href="index.php"></a></li>
+      <li class="nav-item not-login"><a class="nav item nav-link" id="home-link" href="index.php"><img src="images/homeicon.png" height=35px width=35px></a></li>
 
       <?php
       #If the user is logged in, echo profile options and logout button
       #Else, echo login and registration options
       if($logged_in == TRUE){
-        echo '<li class="nav-item not-login"><a class="nav-item nav-link" id="view-profile" href="viewprofile.php"></a></li>';
-        echo '<li class="nav-item not-login"><a class="nav-item nav-link" id="edit-profile" href="editprofile.php"></a></li>';
-        echo '<li class="nav-item not-login"><a class="nav-item nav-link" id="search-user" href="searchuser.php"></a></li>';
+        echo '<li class="nav-item not-login"><a class="nav-item nav-link" id="view-profile" href="viewprofile.php"><img src="images/personicon.png" height=35px width=35px></a></li>';
+        echo '<li class="nav-item not-login"><a class="nav-item nav-link" id="edit-profile" href="editprofile.php"><img src="images/pencilicon.png" height=35px width=35px></a></li>';
+        echo '<li class="nav-item not-login"><a class="nav-item nav-link" id="search-user" href="searchuser.php"><img src="images/searchicon.png" height=35px width=35px></a></li>';
         echo '<li class="nav-item pull-right"><button class="btn btn-primary my-2 my-sm-0" id="logout-button" data-button="logout" type="button" name="button">Logout</button></li>';
         echo '<script src="scripts/index.js" charset="utf-8"></script>';
       }else {

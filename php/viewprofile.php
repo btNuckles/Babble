@@ -34,6 +34,9 @@ while($likes = mysqli_fetch_array($likesresult))
   $karma = $karma + $likes['likes'] + $likes['dislikes'];
 }
 
+$updatesql = "UPDATE users SET karma = '$karma' WHERE id = '$author_id'";
+mysqli_query($conn, $updatesql);
+
 while($userrow = mysqli_fetch_array($userresult))
 {
     # # will be added for avatar selection
@@ -66,7 +69,7 @@ while($userrow = mysqli_fetch_array($userresult))
                     echo '</div>';
                     echo '<div class="col-sm-6">';
                         echo '<h4>Karma</h4>';
-                        echo '<p style="border:3px; border-style:solid; border-color:#D3D3D3; padding: 1em;">' . $karma . '</p>';
+                        echo '<p style="border:3px; border-style:solid; border-color:#D3D3D3; padding: 1em;">' . $userrow['karma'] . '</p>';
                     echo '</div>';
                 echo '</div>';
                 echo '<div class="row">';

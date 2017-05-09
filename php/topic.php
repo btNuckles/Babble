@@ -11,6 +11,15 @@ if ($conn == false) {
     die("Connection failed");
 }
 mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
+
+//Get user id
+$login = $_SESSION['userlogin'];
+$usersql = "SELECT id FROM users WHERE username = '" . $login . "'";
+$userresult = mysqli_query($conn, $usersql);
+while ($userrow = mysqli_fetch_array($userresult)) {
+    $uid = $userrow['id'];
+}
+
 // Grabbing title from 'threads' table
 $sql = "SELECT * FROM threads, posts WHERE thread_id = '$thread_id' AND threads.id = posts.thread_id";
 $result = mysqli_query($conn, $sql);
@@ -44,11 +53,41 @@ while($row = mysqli_fetch_array($result))
     echo '<span class="poster">' . $author_name . '</span>';
     echo '<div class="post-avatar">' . 'AVATAR HERE' . '</div>';
 	if ($loggedin) {
-      echo '<div class="post-votes"><button data-button="dislike-button" onclick=dislikeFunction(event,' . $post_id . ')>Dislike</button> ';
-      echo $score;
-	  echo ' <button data-button="like-button" onclick=likeFunction(event,' . $post_id . ')>Like</button></div>';
+        $checklikesql = "SELECT COUNT(*) as count FROM voterecord WHERE userid = $uid AND postid = $post_id";
+        $checklikeresult = mysqli_query($conn, $checklikesql);
+        if (!$checklikeresult) {
+            printf("Error: %s\n", mysqli_error($conn));
+            exit();
+        }
+        while ($checklikerow = mysqli_fetch_array($checklikeresult)) {
+            $likerowcount = $checklikerow['count'];
+        }
+
+        if ($likerowcount == 0) {
+            echo '<div class="post-votes"><button data-button="dislike-button" onclick=dislikeFunction(event,' . $post_id . ')>Dislike</button> ';
+            echo $score;
+            echo ' <button data-button="like-button" onclick=likeFunction(event,' . $post_id . ')>Like</button></div>';
+        } else {
+            $checkdislikesql = "SELECT * FROM voterecord WHERE userid = $uid AND postid = $post_id";
+            $checkdislikeresult = mysqli_query($conn, $checkdislikesql);
+            while ($checkdislikerow = mysqli_fetch_array($checkdislikeresult)) {
+                $dislikerow = $checkdislikerow['dislikes'];
+            }
+
+            if ($dislikerow == 1) {
+                echo '<div class="post-votes"><button data-button="dislike-button" style="background-color:#f44336" onclick=dislikeFunction(event,' . $post_id . ')>Dislike</button> ';
+                echo $score;
+        	    echo ' <button data-button="like-button" onclick=likeFunction(event,' . $post_id . ')>Like</button></div>';
+            } else {
+                echo '<div class="post-votes"><button data-button="dislike-button" onclick=dislikeFunction(event,' . $post_id . ')>Dislike</button> ';
+                echo $score;
+        	    echo ' <button data-button="like-button" style="background-color:lightgreen" onclick=likeFunction(event,' . $post_id . ')>Like</button></div>';
+            }
+        }
+
+
 	} else {
-	  echo '<span class="like-counter">Score: ' . $score . '</span>';
+        echo '<span class="like-counter">Score: ' . $score . '</span>';
 	}
     echo '</div>';
     //End Poster-Info

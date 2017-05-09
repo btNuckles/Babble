@@ -12,12 +12,59 @@ if ($conn == false) {
 }
 
 mysqli_select_db($conn, 'forumproject') or die( "Unable to select database");
-$id = $_GET["post_id"];
-$sql = "UPDATE posts SET likes = likes + 1 WHERE id = $id";
-$insert= mysqli_query($conn, $sql);
 
-/* $sql = "SELECT likes FROM posts WHERE id = $id";
+$pid = $_POST['post_id'];
+
+$login = $_SESSION['userlogin'];
+$usersql = "SELECT id FROM users WHERE username = '" . $login . "'";
+$userresult = mysqli_query($conn, $usersql);
+while ($userrow = mysqli_fetch_array($userresult)) {
+    $uid = $userrow['id'];
+}
+
+$checklikesql = "SELECT COUNT(*) as count FROM voterecord WHERE userid = $uid AND postid = $pid";
+$checklikeresult = mysqli_query($conn, $checklikesql);
+if (!$checklikeresult) {
+    printf("Error: %s\n", mysqli_error($conn));
+    exit();
+}
+while ($checklikerow = mysqli_fetch_array($checklikeresult)) {
+    $likerowcount = $checklikerow['count'];
+}
+
+if ($likerowcount == 0) {
+    $addlikesql = "UPDATE posts SET likes = likes + 1 WHERE id = $pid";
+    $addlikeinsert = mysqli_query($conn, $addlikesql);
+
+    $insertsql = "INSERT INTO voterecord VALUES('$uid', '$pid', 1, 0)";
+    $insertresult = mysqli_query($conn, $insertsql);
+} else {
+    $checkdislikesql = "SELECT * FROM voterecord WHERE userid = $uid AND postid = $pid";
+    $checkdislikeresult = mysqli_query($conn, $checkdislikesql);
+    while ($checkdislikerow = mysqli_fetch_array($checkdislikeresult)) {
+        $dislikerow = $checkdislikerow['dislikes'];
+    }
+
+    if ($dislikerow == 1) {
+        $addlikesql = "UPDATE posts SET likes = likes + 1 WHERE id = $pid";
+        $addlikeinsert = mysqli_query($conn, $addlikesql);
+
+        $remdislikesql = "UPDATE posts SET dislikes = dislikes - 1 WHERE id = $pid";
+        $remdislikeinsert = mysqli_query($conn, $remdislikesql);
+
+        $insertsql = "UPDATE voterecord SET userid = $uid, postid = $pid, likes = 1, dislikes = 0 WHERE userid = $uid AND postid = $pid";
+        $insertresult = mysqli_query($conn, $insertsql);
+
+    }
+}
+
+
+$sql = "SELECT likes FROM posts WHERE id = $pid";
 $newlikes = mysqli_query($conn, $sql);
 $likes = mysqli_fetch_array($newlikes);
-echo $likes['likes']; */
+echo $likes['likes'];
+
+
+
+
 ?>

@@ -96,7 +96,7 @@ function createButtonEvent() {
                     if (result == 'user does not exist') {
                         showWrongUsernameError();
                     } else {
-                        window.location.href = 'viewprofile.php';
+                        window.location.href = 'viewmessage.php';
                         //setTimeout ("window.location='index.php'", 1000);
                     }
                 },

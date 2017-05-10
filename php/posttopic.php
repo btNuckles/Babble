@@ -35,7 +35,7 @@ $content = $_POST['contentEntered'];
 // $dislikes = ""; <-- default is 0
 // ======= POST TABLE ==========
 
-$sql = "INSERT INTO posts"."(thread_id, author_id, time_created, content, likes, dislikes, media)"."VALUES('$thread_id', '$author_id', '$time', '$content', 0, 0, '$media')";
+$sql = "INSERT INTO posts"."(thread_id, author_id, time_created, content, likes, dislikes)"."VALUES('$thread_id', '$author_id', '$time', '$content', 0, 0)";
 $insert= mysqli_query($conn, $sql);
 
 
